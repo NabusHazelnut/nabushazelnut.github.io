@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazel Nabus | BSIT Portfolio</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth}
+body{background:#000;color:#fff}
+nav{position:fixed;top:0;width:100%;padding:22px 8%;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.95);z-index:999;border-bottom:1px solid #111}
+.logo{font-size:28px;font-weight:800;color:#c66a70;text-decoration:none}
+.links{display:flex;gap:30px} 
+.links a{color:#666;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1px;padding-bottom:4px;border-bottom:2px solid transparent;transition:.3s}
+.links a.active{color:#fff;border-bottom:2px solid #c66a70}
+.home{min-height:100vh;display:flex;align-items:center;padding:110px 8% 50px;gap:60px}
+.home-left{flex:1;display:flex;justify-content:center}
+.circle{width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,#ff4d4d,#b30000);box-shadow:0 0 80px rgba(255,0,0,.35);overflow:hidden;border:2px solid #c66a70}
+.circle img{width:100%;height:100%;object-fit:cover}
+.home-right{flex:1}
+.home-right h1{font-size:62px;font-weight:800;line-height:1.1} .home-right h1 span{color:#c66a70}
+.home-right h2{font-size:28px;font-weight:700;margin:15px 0;color:#fff}
+.home-right .bold-text{font-size:15px;color:#aaa;line-height:1.8;margin:20px 0;max-width:520px}
+.home-right .bold-text b{color:#fff}
+.btn{margin-top:15px;display:inline-flex;align-items:center;gap:10px;border:1.5px solid #c66a70;color:#c66a70;padding:12px 32px;border-radius:25px;text-decoration:none;font-size:14px;font-weight:600;transition:.3s}
+.btn:hover{background:#c66a70;color:#000}
+section{padding:90px 8%}
+.title{font-size:34px;text-align:center;margin-bottom:20px} .title span{color:#c66a70}
+.about{background:#0a0a0a;display:flex;gap:50px;align-items:center}
+.about p{color:#bbb;line-height:1.8;margin-bottom:10px;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#111;border:1px solid #222;padding:25px;border-radius:14px}
+.card i{color:#c66a70;font-size:28px;margin-bottom:12px}
+.timeline{max-width:800px;margin:auto;border-left:2px solid #222;padding-left:35px}
+.t-item{background:#111;border:1px solid #222;padding:22px;border-radius:12px;margin-bottom:30px;position:relative;cursor:pointer}
+.t-item::before{content:'';position:absolute;left:-46px;top:28px;width:14px;height:14px;background:#c66a70;border-radius:50%}
+.parents-wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:center}
+.p-card{width:320px;background:#111;border:1px solid #222;border-radius:18px;padding:28px;text-align:center}
+.p-card img{width:110px;height:110px;border-radius:50%;border:2px solid #c66a70;object-fit:cover;margin-bottom:12px}
+.contact-box{max-width:650px;margin:auto;background:#111;border:1px solid #222;padding:35px;border-radius:18px}
+.contact-box input,.contact-box textarea{width:100%;background:#000;border:1px solid #333;padding:12px;border-radius:8px;color:#fff;margin-bottom:14px}
+#awardModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;justify-content:center;align-items:center;padding:20px}
+.modal-box{background:#111;border:1px solid #c66a70;border-radius:15px;padding:30px;max-width:600px;width:100%;position:relative}
+.close{position:absolute;top:15px;right:20px;font-size:28px;cursor:pointer;color:#c66a70}
+@media(max-width:900px){.home{flex-direction:column;text-align:center}.circle{width:320px;height:320px}.about{flex-direction:column}.links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="#home" class="logo">MyPortfolio</a>
+<div class="links">
+<a href="#home" class="active">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#education">Education</a>
+<a href="#parents">Parents</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<div class="home" id="home">
+<div class="home-left"><div class="circle"><img src="profile.jpg" alt="Hazel"></div></div>
+<div class="home-right">
+<h1>Hi, it's <span>Hazel</span></h1>
+<h2>I'm a BSIT Student</h2>
+<p class="bold-text">I am <b>BOLD, driven, and eager to learn</b> - ready to contribute real solutions to your company.</p>
+<a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Hire me</a>
+</div>
+</div>
+
+<section class="about" id="about">
+<div style="flex:1">
+<h2 class="title" style="text-align:left">About <span>Me</span></h2>
+<p><b style="color:#c66a70">Full Name:</b> Hazel Nabus</p>
+<p><b style="color:#c66a70">Birthday:</b> October 10, 2007</p>
+<p><b style="color:#c66a70">Course:</b> BSIT - University of the Cordilleras (2026-Ongoing)</p>
+<p><b style="color:#c66a70">Phone:</b> 0918-258-3277</p>
+<p><b style="color:#c66a70">Interest:</b> Enterprise Resource Planning (ERP)</p>
+</div>
+<div style="flex:0.8"><img src="profile.jpg" style="width:100%;border-radius:20px;border:1px solid #c66a70"></div>
+</section>
+
+<section id="skills">
+<h2 class="title">My <span>Skills</span></h2>
+<div class="cards">
+<div class="card"><i class="fab fa-html5"></i><h3>Web Dev</h3><p>HTML, CSS, JS</p></div>
+<div class="card"><i class="fas fa-database"></i><h3>IT</h3><p>Programming, Database</p></div>
+<div class="card"><i class="fas fa-sitemap"></i><h3>ERP Interest</h3><p>Business Systems</p></div>
+<div class="card"><i class="fas fa-flask"></i><h3>STEM</h3><p>Research, Critical Thinking</p></div>
+</div>
+</section>
+
+<section id="education" style="background:#0a0a0a">
+<h2 class="title">Education & <span>Awards</span></h2>
+<div class="timeline">
+<div class="t-item" onclick="openAward('college')"><h4 style="color:#c66a70">2026 - Ongoing</h4><h3>University of the Cordilleras</h3><p>BSIT</p></div>
+<div class="t-item" onclick="openAward('bsu')"><h4 style="color:#c66a70">2019 - 2025</h4><h3>Benguet State University - SLS</h3><p>STEM - Honors</p></div>
+<div class="t-item" onclick="openAward('elementary')"><h4 style="color:#c66a70">2013 - 2019</h4><h3>La Trinidad Central School</h3><p>Honors</p></div>
+</div>
+<div id="awardModal"><div class="modal-box"><span class="close" onclick="closeAward()">&times;</span><div id="awardContent"></div></div></div>
+</section>
+
+<section id="parents">
+<h2 class="title">My <span>Parents</span></h2>
+<div class="parents-wrap">
+<div class="p-card"><img src="https://i.pravatar.cc/200?img=26"><h3>Cristina P. Nabus</h3><p style="color:#c66a70">My Mother</p></div>
+<div class="p-card"><img src="https://i.pravatar.cc/200?img=15"><h3>Robert M. Nabus</h3><p style="color:#c66a70">My Father</p></div>
+</div>
+</section>
+
+<section id="contact" style="background:#0a0a0a">
+<h2 class="title">Contact <span>Me</span></h2>
+<div class="contact-box">
+<input placeholder="Your Name"><input placeholder="Your Email"><textarea rows="5" placeholder="Your Message"></textarea>
+<a class="btn" style="width:100%;justify-content:center" onclick="alert('Message sent!')">Send Message</a>
+<p style="text-align:center;color:#777;margin-top:20px;font-size:12px">Hazel Nabus | 0918-258-3277 | BSIT - UC</p>
+</div>
+</section>
+
+<script>
+const sections = document.querySelectorAll("section, .home");
+const navLinks = document.querySelectorAll(".links a");
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    if (scrollY >= section.offsetTop - 200) current = section.getAttribute("id");
+  });
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) link.classList.add("active");
+  });
+});
+navLinks.forEach(link => {
+  link.addEventListener("click", function() {
+    navLinks.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+const awardData = {
+college: `<h2 style="color:#c66a70">UC - BSIT</h2><p>Currently pursuing BSIT</p>`,
+bsu: `<h2 style="color:#c66a70">BSU SLS</h2><p>With Honors - STEM Graduate</p>`,
+elementary: `<h2 style="color:#c66a70">La Trinidad Central</h2><p>Honors Student</p>`
+}
+function openAward(k){document.getElementById('awardContent').innerHTML=awardData[k];document.getElementById('awardModal').style.display='flex'}
+function closeAward(){document.getElementById('awardModal').style.display='none'}
+</script>
+
+</body>
+</html>
