@@ -32,4 +32,75 @@ nav{position:fixed;top:0;left:0;width:100%;height:80px;padding:0 6%;display:flex
 .p-card img{width:100%;height:170px;object-fit:cover;border-radius:10px;border:1px solid #c66a70;margin-bottom:8px;background:#222}
 .btn{margin-top:14px;display:inline-flex;gap:8px;border:1.5px solid #c66a70;color:#c66a70;padding:9px 20px;border-radius:28px;font-size:11px;font-weight:600;cursor:pointer;background:transparent}
 .section-label{font-size:13px;color:#fff;font-weight:700;margin:20px 0 8px 0}
-.divider{height:1px;background:#222;margin
+.divider{height:1px;background:#222;margin:20px 0}
+.cert-grid{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.cert-grid.open{display:grid;animation:fade .2s ease}
+.cert-card{background:#151515;border:1px solid #222;border-radius:10px;padding:10px;display:flex;gap:10px;align-items:center;cursor:pointer}
+.cert-card:hover{border-color:#c66a70}
+.cert-card img{width:60px;height:60px;object-fit:cover;border-radius:6px;border:1px solid #333}
+.folder{width:100%;background:#111;border:1px solid #222;border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;margin-bottom:8px}
+.folder:hover{border-color:#c66a70;background:#151515}
+.folder.active{border-color:#c66a70;background:#1a1010}
+.folder i.arrow{color:#666;transition:.2s}
+.folder.active i.arrow{transform:rotate(90deg);color:#c66a70}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;align-items:center;justify-content:center;padding:20px}
+.modal.active{display:flex}
+.modal-box{background:#111;border:1px solid #c66a70;border-radius:16px;padding:20px;max-width:500px;width:100%;text-align:center;position:relative}
+.modal-box img{width:100%;max-height:60vh;object-fit:contain;border-radius:8px;margin-bottom:10px}
+.close{position:absolute;top:8px;right:12px;font-size:18px;color:#666;cursor:pointer}
+@media (max-width:1024px){.circle{width:300px;height:300px;min-width:300px}.page{padding:24px 5%}}
+@media (max-width:768px){
+nav{height:60px;padding:0 4%}.logo{font-size:18px}.links{gap:10px}.links a{font-size:9px}
+.viewport{margin-top:60px;height:calc(100vh - 60px)}
+.page{padding:16px 4%;gap:16px}.page.active{flex-direction:column !important}
+.circle{width:220px;height:220px;min-width:220px;margin:0 auto}
+#home h1{font-size:32px !important;text-align:center}#home h2{font-size:16px !important;text-align:center}
+#home p{text-align:center;margin:0 auto}#home .btn{margin:14px auto 0 auto;display:flex;justify-content:center}
+.title{font-size:20px}.cert-grid{grid-template-columns:1fr !important}.folder b{font-size:12px !important}.folder span{display:none}
+.p-card{width:100%}#about{flex-direction:column !important}
+}
+</style>
+</head>
+<body>
+<nav><div class="logo">MyPortfolio</div><div class="links"><a onclick="showPage('home')" id="l-home" class="active">Home</a><a onclick="showPage('about')" id="l-about">About</a><a onclick="showPage('education')" id="l-education">Education & Achievements</a><a onclick="showPage('family')" id="l-family">My Family</a></div></nav>
+<div class="viewport">
+<div id="home" class="page active"><div class="circle"><img src="profile.jpg" onerror="this.src='https://i.pravatar.cc/400?img=26'"></div><div style="flex:1"><h1 style="font-size:52px;font-weight:800">Hi, it's <span style="color:#c66a70">Hazel</span></h1><h2 style="font-size:20px;margin:10px 0">I'm a BSIT Student</h2><p style="color:#999;font-size:13px;line-height:1.6;max-width:460px">I am <b style="color:#fff">BOLD, driven, and eager to learn</b> - ready to contribute real solutions. Currently learning <b>Python & Java</b> and aspiring to master ERP.</p><button class="btn" onclick="openContact()"><i class="fas fa-paper-plane"></i> Contact Me</button></div></div>
+
+<div id="about" class="page"><div style="flex:1"><h2 class="title">About <span>Me</span></h2><div class="card"><p style="color:#bbb;line-height:1.9;font-size:12px"><b style="color:#c66a70">Full Name:</b> Hazel Mae Pacasi Nabus<br><b style="color:#c66a70">Birthday:</b> October 10, 2007<br><b style="color:#c66a70">Course:</b> BSIT - University of the Cordilleras<br><b style="color:#c66a70">Location:</b> La Trinidad, Benguet<br><b style="color:#c66a70">Interest:</b> ERP Enterprise Resource Planning<br><b style="color:#c66a70">Mother:</b> Cristina P. Nabus - RCC1<br><b style="color:#c66a70">Father:</b> Robert M. Nabus (Late)<br><b style="color:#c66a70">Email:</b> hazelnabus7@gmail.com<br><b style="color:#c66a70">Phone:</b> 0918-258-3277</p></div><h3 style="margin-top:14px;font-size:13px">Hard <span style="color:#c66a70">Skills</span></h3><div style="margin-top:6px"><span class="skill-tag">Python (Learning)</span><span class="skill-tag">Java (Learning)</span><span class="skill-tag">HTML (Aspiring)</span><span class="skill-tag">CSS (Aspiring)</span><span class="skill-tag">MS Word</span><span class="skill-tag">MS Excel</span><span class="skill-tag">Canva</span><span class="skill-tag">Typing</span><span class="skill-tag">Data Encoding</span><span class="skill-tag">Filing</span><span class="skill-tag">ERP Basics - 2nd Year Goal</span></div><h3 style="margin-top:12px;font-size:13px">Soft <span style="color:#c66a70">Skills</span></h3><div style="margin-top:6px"><span class="skill-tag soft">Communication - Deepening</span><span class="skill-tag soft">Teamwork</span><span class="skill-tag soft">Patience</span><span class="skill-tag soft">Problem Solving</span><span class="skill-tag soft">Persistence</span><span class="skill-tag soft">Leadership</span></div></div><div style="flex:0.5"><img src="profile.jpg" style="width:100%;border-radius:14px;border:1px solid #c66a70" onerror="this.style.display='none'"><button class="btn" style="width:100%;justify-content:center;margin-top:10px" onclick="openContact()"><i class="fas fa-envelope"></i> Contact Me</button></div></div>
+
+<div id="education" class="page" style="flex-direction:column;align-items:flex-start"><h2 class="title">Education & <span>Achievements</span></h2><div style="width:100%;max-width:900px"><div class="section-label"><i class="fas fa-graduation-cap" style="color:#c66a70;margin-right:6px"></i> EDUCATION JOURNEY</div><div class="t-item"><img src="uc.png" onerror="this.style.display='none'"><div><h4 style="color:#c66a70;font-size:12px">2026 - Ongoing</h4><h3 style="font-size:14px">University of the Cordilleras</h3><p style="color:#888;font-size:11px">BSIT - Baguio City - 2nd Year</p></div></div><div class="t-item"><img src="sls.png" onerror="this.style.display='none'"><div><h4 style="color:#c66a70;font-size:12px">2019 - 2025</h4><h3 style="font-size:14px">Benguet State University - SLS</h3><p style="color:#888;font-size:11px">STEM Strand - La Trinidad, Benguet</p></div></div><div class="t-item"><img src="elem.png" onerror="this.style.display='none'"><div><h4 style="color:#c66a70;font-size:12px">2013 - 2019</h4><h3 style="font-size:14px">La Trinidad Central School</h3><p style="color:#888;font-size:11px">Elementary - Honors</p></div></div><div class="divider"></div><p style="color:#666;font-size:11px;margin-bottom:10px">Click a folder to show certificates</p><div class="folder" id="folder-acad" onclick="toggleFolder('acad')"><div><i class="fas fa-folder" style="color:#c66a70;margin-right:8px"></i> <b style="font-size:13px">Academic Certificates</b> <span style="color:#666;font-size:11px;margin-left:8px">3 items</span></div><i class="fas fa-chevron-right arrow"></i></div><div class="cert-grid" id="grid-acad"><div class="cert-card" onclick="openCert('grad.jpg','STEM Graduated - BSU SLS - 2025 - With Honors & Leadership Award')"><img src="grad.jpg" onerror="this.src='https://via.placeholder.com/60x60/111/c66a70?text=Grad'"><div><h4 style="font-size:12px;color:#c66a70">STEM Graduated</h4><p style="font-size:10px;color:#888">BSU SLS - 2025 - With Honors</p></div></div><div class="cert-card" onclick="openCert('cert-leadership-23.jpg','Leadership Certificate 2023-2024')"><img src="cert-leadership-23.jpg" onerror="this.src='https://via.placeholder.com/60x60/111/c66a70?text=L23'"><div><h4 style="font-size:12px;color:#c66a70">Leadership Certificate</h4><p style="font-size:10px;color:#888">2023-2024</p></div></div><div class="cert-card" onclick="openCert('cert-leadership-24.jpg','Leadership Certificate 2024-2025')"><img src="cert-leadership-24.jpg" onerror="this.src='https://via.placeholder.com/60x60/111/c66a70?text=L24'"><div><h4 style="font-size:12px;color:#c66a70">Leadership Certificate</h4><p style="font-size:10px;color:#888">2024-2025</p></div></div></div><div class="folder" id="folder-train" onclick="toggleFolder('train')"><div><i class="fas fa-folder" style="color:#c66a70;margin-right:8px"></i> <b style="font-size:13px">Training & Professional Development</b> <span style="color:#666;font-size:11px;margin-left:8px">1 item</span></div><i class="fas fa-chevron-right arrow"></i></div><div class="cert-grid" id="grid-train"><div class="cert-card" onclick="openCert('cert-dost.jpg','DOST-SEI Scholars Leadership Camp - Sept 16-20, 2026')"><img src="cert-dost.jpg" onerror="this.src='https://via.placeholder.com/60x60/111/c66a70?text=DOST'"><div><h4 style="font-size:12px;color:#c66a70">DOST-SEI Scholars Leadership Camp</h4><p style="font-size:10px;color:#888">Sept 16-20, 2026</p></div></div></div><div class="folder" id="folder-spes" onclick="toggleFolder('spes')"><div><i class="fas fa-folder" style="color:#c66a70;margin-right:8px"></i> <b style="font-size:13px">SPES-DOLE</b> <span style="color:#666;font-size:11px;margin-left:8px">2 items</span></div><i class="fas fa-chevron-right arrow"></i></div><div class="cert-grid" id="grid-spes"><div class="cert-card" onclick="openCert('cert-spes-23.jpg','SPES 2023')"><img src="cert-spes-23.jpg" onerror="this.src='https://via.placeholder.com/60x60/111/c66a70?text=SPES23'"><div><h4 style="font-size:12px;color:#c66a70">SPES 2023</h4><p style="font-size:10px;color:#888">Special Program for Employment of Students</p></div></div><div class="cert-card" onclick="openCert('cert-spes-26.jpg','SPES 2026 - No Certificate Yet')"><img src="cert-spes-26.jpg" onerror="this.src='https://via.placeholder.com/60x60/111/c66a70?text=SPES26'"><div><h4 style="font-size:12px;color:#c66a70">SPES 2026</h4><p style="font-size:10px;color:#888">No certificate yet</p></div></div></div></div></div>
+
+<div id="family" class="page" style="flex-direction:column"><h2 class="title">My <span>Family</span></h2><div class="p-wrap"><div class="p-card"><img src="mom.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c66a70?text=My+Mom'"><h3 style="font-size:14px">My Mom</h3><p style="color:#c66a70;font-size:12px">Cristina P. Nabus</p><p style="color:#bbb;font-size:11px;margin-top:4px;line-height:1.5">She is the light and delight of our family. She is a hardworking woman whom I aspire to be like — admired for her patience and persistence.</p></div><div class="p-card"><img src="dad.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c66a70?text=My+Dad'"><h3 style="font-size:14px">My Dad</h3><p style="color:#c66a70;font-size:12px">Robert M. Nabus</p><p style="color:#bbb;font-size:11px;margin-top:4px;line-height:1.5">He was an all-rounder, a jack of all trades. I am grateful to have acquired many of his traits.</p><p style="color:#777;font-size:10px">In Loving Memory</p></div><div class="p-card"><img src="family.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c66a70?text=Whole+Family'"><h3 style="font-size:14px">My Whole Family</h3><p style="color:#c66a70;font-size:12px">Nabus Family</p><p style="color:#bbb;font-size:11px;margin-top:4px">La Trinidad, Benguet</p></div></div></div>
+</div>
+
+<div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src=""><h3 id="certTitle" style="color:#c66a70;font-size:13px;margin-top:8px"></h3></div></div>
+<div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:12px;text-align:left"><i class="fas fa-envelope" style="color:#c66a70"></i> hazelnabus7@gmail.com<br><i class="fas fa-phone" style="color:#c66a70"></i> 0918-258-3277<br><i class="fas fa-map-marker-alt" style="color:#c66a70"></i> La Trinidad, Benguet</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
+
+<script>
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.querySelectorAll('.links a').forEach(a=>a.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.getElementById('l-'+id).classList.add('active');
+}
+function toggleFolder(name){
+const grid=document.getElementById('grid-'+name);
+const folder=document.getElementById('folder-'+name);
+const isOpen=grid.classList.contains('open');
+document.querySelectorAll('.cert-grid').forEach(g=>g.classList.remove('open'));
+document.querySelectorAll('.folder').forEach(f=>f.classList.remove('active'));
+if(!isOpen){grid.classList.add('open');folder.classList.add('active');}
+}
+function openCert(src,title){
+document.getElementById('certImg').src=src;
+document.getElementById('certTitle').innerText=title;
+document.getElementById('certModal').classList.add('active');
+}
+function openContact(){document.getElementById('contactModal').classList.add('active');}
+function closeModals(){
+document.getElementById('certModal').classList.remove('active');
+document.getElementById('contactModal').classList.remove('active');
+}
+</script>
+</body>
+</html>
