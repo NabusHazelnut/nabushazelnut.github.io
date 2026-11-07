@@ -24,7 +24,10 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .page.active{display:flex !important;animation:fade .3s ease}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 #home{justify-content:center;align-items:center;gap:clamp(30px, 6vw, 80px);padding:clamp(20px, 4vw, 40px) clamp(16px, 6vw, 7%)}
-#about{gap:clamp(28px, 4vw, 48px) !important;align-items:flex-start}
+#about{flex-direction:row !important;gap:32px !important;align-items:flex-start;justify-content:flex-start}
+.about-left{flex:1;min-width:0}
+.about-right{flex:0 0 340px;width:340px;max-width:340px;flex-shrink:0}
+.about-right img{width:100%;border-radius:14px;border:1px solid #c97a7e;display:block;object-fit:cover}
 .circle{width:clamp(300px, 38vw, 560px);height:clamp(300px, 38vw, 560px);min-width:clamp(300px, 38vw, 560px);border-radius:50%;background:#fff;overflow:hidden;border:2px solid var(--pink);box-shadow:0 0 80px rgba(180,0,0,.35), 0 0 140px rgba(201,122,126,.35);flex-shrink:0;margin:auto 0}
 .circle img{width:100%;height:100%;object-fit:cover;object-position:top}
 .home-text{flex:1;max-width:640px}
@@ -79,10 +82,13 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .side-arrow:disabled{opacity:.25;cursor:not-allowed;transform:translateY(-50%) scale(1)}
 #prevSide{left:12px}
 #nextSide{right:12px}
-@media (max-width:480px){
+@media (max-width:768px){
 html{font-size:15px}
 nav{padding:0 12px;height:58px}.logo{font-size:18px}.links{gap:12px}.links a{font-size:11px;font-weight:600}
 .page{padding:16px 14px 70px;flex-direction:column !important;gap:18px;align-items:center;text-align:center}
+#about{flex-direction:column !important;gap:18px !important;align-items:center}
+.about-left,.about-right{width:100%;max-width:100%;flex:none}
+.about-right{max-width:380px}
 .circle{width:280px;height:280px;min-width:280px}
 .home-text{max-width:100%;text-align:center}
 .home-text h1{font-size:38px !important;white-space:normal;letter-spacing:-1px}
@@ -93,43 +99,28 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links{gap:12px}.links a{fon
 .cert-grid{grid-template-columns:1fr !important}
 .folder span{display:none}
 #about,#education,#family{text-align:left}
-#about{gap:18px !important}
 .side-arrow{top:auto !important;bottom:14px;transform:none !important;width:42px;height:42px;font-size:16px;box-shadow:0 4px 16px rgba(201,122,126,.6);opacity:.95}
 .side-arrow:hover{transform:scale(1.1) !important;background:#fff}
 .side-arrow:disabled{transform:scale(1) !important}
 #prevSide{left:14px}
 #nextSide{right:14px}
 }
-@media (min-width:481px) and (max-width:768px){
-html{font-size:15.5px}
-.page{flex-direction:column !important;align-items:center;text-align:center;gap:20px;padding-bottom:70px}
-.circle{width:340px;height:340px;min-width:340px}
-.home-text{text-align:center}
-.home-text h1{font-size:48px !important}
-.home-text h2{font-size:24px !important}
-.home-text p{margin:0 auto}
-.p-wrap{grid-template-columns:1fr 1fr}
-#about,#education,#family{text-align:left}
-#about{gap:20px !important}
-.side-arrow{top:auto !important;bottom:16px;transform:none !important;width:46px;height:46px;font-size:18px;opacity:.95}
-.side-arrow:hover{transform:scale(1.1) !important;background:#fff}
-.side-arrow:disabled{transform:scale(1) !important}
-#prevSide{left:18px}
-#nextSide{right:18px}
-}
 @media (min-width:769px) and (max-width:1024px){
 html{font-size:15.5px}
 .page{padding:24px 4%;gap:28px}
+#about{flex-direction:row !important;gap:24px !important}
+.about-right{flex:0 0 280px;width:280px;max-width:280px}
 .circle{width:400px;height:400px;min-width:400px}
 .home-text h1{font-size:54px !important}
 .home-text h2{font-size:26px !important}
 .p-wrap{grid-template-columns:repeat(2, 1fr)}
 .side-arrow{width:46px;height:46px}
-#about{gap:28px !important}
 }
 @media (min-width:1025px) and (max-width:1440px){
 html{font-size:16px}
 .page{padding:30px 5%}
+#about{flex-direction:row !important;gap:32px !important}
+.about-right{flex:0 0 340px;width:340px;max-width:340px}
 .circle{width:520px;height:520px;min-width:520px}
 .home-text h1{font-size:68px !important}
 .home-text h2{font-size:30px !important}
@@ -139,6 +130,8 @@ html{font-size:16px}
 html{font-size:17.5px}
 body{letter-spacing:-0.015em}
 .page{padding:40px 8%;max-width:1650px;margin:0 auto;left:50%;transform:translateX(-50%)}
+#about{flex-direction:row !important;gap:40px !important}
+.about-right{flex:0 0 380px;width:380px;max-width:380px}
 .circle{width:600px;height:600px;min-width:600px}
 .home-text h1{font-size:84px !important;line-height:1.05}
 .home-text h2{font-size:36px !important}
@@ -165,7 +158,7 @@ body{letter-spacing:-0.015em}
 </div>
 </div>
 
-<div id="about" class="page"><div style="flex:1;min-width:0"><h2 class="title">About <span>Me</span></h2><div class="card"><p style="color:#bbb">I'm Hazel Mae Pacasi Nabus, a 1st Year BSIT student at the University of the Cordilleras in Baguio City.</p><p style="color:#bbb;margin-top:10px">I'm building my foundation in Python and Java, with an interest in ERP and web technologies. I have real office experience from SPES 2023 and 2026 under DOLE, where I handled data encoding, filing, and document preparation. I'm also a DOST-SEI scholar with leadership training.</p><p style="color:#bbb;margin-top:10px">I am organized, patient, and persistent - I can help with accurate encoding, filing, and making clear documents and presentations. I'm looking for an internship or entry-level opportunity where I can contribute, learn fast, and grow as an IT professional.</p><p style="color:#bbb;margin-top:12px"><b style="color:#c97a7e">School:</b> University of the Cordilleras - Baguio City<br><b style="color:#c97a7e">Address:</b> La Trinidad, Benguet 2601, Philippines<br><b style="color:#c97a7e">Email:</b> hazelnabus7@gmail.com<br><b style="color:#c97a7e">Phone:</b> 0918-258-3277</p></div><h3 style="margin-top:16px;font-size:clamp(13px, 1.4vw, 14px)">Hard <span style="color:#c97a7e">Skills</span></h3><div style="margin-top:8px"><span class="skill-tag">Python (Learning)</span><span class="skill-tag">Java (Learning)</span><span class="skill-tag">HTML (Aspiring)</span><span class="skill-tag">CSS (Aspiring)</span><span class="skill-tag">MS Word</span><span class="skill-tag">MS Excel</span><span class="skill-tag">Canva</span><span class="skill-tag">Data Encoding</span><span class="skill-tag">Filing</span><span class="skill-tag">ERP Basics - 2nd Year Goal</span></div><h3 style="margin-top:14px;font-size:clamp(13px, 1.4vw, 14px)">Soft <span style="color:#c97a7e">Skills</span></h3><div style="margin-top:8px"><span class="skill-tag soft">Communication - Deepening</span><span class="skill-tag soft">Teamwork</span><span class="skill-tag soft">Patience</span><span class="skill-tag soft">Problem Solving</span><span class="skill-tag soft">Persistence</span></div><div style="flex:0 0 360px;max-width:380px;width:100%"><img src="profile.jpg" style="width:100%;border-radius:14px;border:1px solid #c97a7e" onerror="this.style.display='none'"><button class="btn" style="width:100%;justify-content:center" onclick="openContact()"><i class="fas fa-envelope"></i> Contact Me</button></div></div>
+<div id="about" class="page"><div class="about-left"><h2 class="title">About <span>Me</span></h2><div class="card"><p style="color:#bbb">I'm Hazel Mae Pacasi Nabus, a 1st Year BSIT student at the University of the Cordilleras in Baguio City.</p><p style="color:#bbb;margin-top:10px">I'm building my foundation in Python and Java, with an interest in ERP and web technologies. I have real office experience from SPES 2023 and 2026 under DOLE, where I handled data encoding, filing, and document preparation. I'm also a DOST-SEI scholar with leadership training.</p><p style="color:#bbb;margin-top:10px">I am organized, patient, and persistent - I can help with accurate encoding, filing, and making clear documents and presentations. I'm looking for an internship or entry-level opportunity where I can contribute, learn fast, and grow as an IT professional.</p><p style="color:#bbb;margin-top:12px"><b style="color:#c97a7e">School:</b> University of the Cordilleras - Baguio City<br><b style="color:#c97a7e">Address:</b> La Trinidad, Benguet 2601, Philippines<br><b style="color:#c97a7e">Email:</b> hazelnabus7@gmail.com<br><b style="color:#c97a7e">Phone:</b> 0918-258-3277</p></div><h3 style="margin-top:16px;font-size:clamp(13px, 1.4vw, 14px)">Hard <span style="color:#c97a7e">Skills</span></h3><div style="margin-top:8px"><span class="skill-tag">Python (Learning)</span><span class="skill-tag">Java (Learning)</span><span class="skill-tag">HTML (Aspiring)</span><span class="skill-tag">CSS (Aspiring)</span><span class="skill-tag">MS Word</span><span class="skill-tag">MS Excel</span><span class="skill-tag">Canva</span><span class="skill-tag">Data Encoding</span><span class="skill-tag">Filing</span><span class="skill-tag">ERP Basics - 2nd Year Goal</span></div><h3 style="margin-top:14px;font-size:clamp(13px, 1.4vw, 14px)">Soft <span style="color:#c97a7e">Skills</span></h3><div style="margin-top:8px"><span class="skill-tag soft">Communication - Deepening</span><span class="skill-tag soft">Teamwork</span><span class="skill-tag soft">Patience</span><span class="skill-tag soft">Problem Solving</span><span class="skill-tag soft">Persistence</span></div></div><div class="about-right"><img src="profile.jpg" onerror="this.style.display='none'"><button class="btn" style="width:100%;justify-content:center" onclick="openContact()"><i class="fas fa-envelope"></i> Contact Me</button></div></div>
 
 <div id="education" class="page" style="flex-direction:column;align-items:flex-start"><h2 class="title">My <span>Achievements</span></h2><div style="width:100%;max-width:900px"><p style="color:#666;font-size:clamp(11px, 1.1vw, 12px);margin-bottom:10px">Click a folder to show certificates</p>
 
@@ -185,7 +178,7 @@ body{letter-spacing:-0.015em}
 </div>
 
 <div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src=""><h3 id="certTitle" style="color:#c97a7e;font-size:clamp(12px, 1.3vw, 13px);margin-top:8px"></h3></div></div>
-<div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:clamp(12px, 1.2vw, 13px);text-align:left"><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-phone" style="color:#c97a7e"></i> 0918-258-3277<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> La Trinidad, Benguet</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
+<div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:clamp(12px, 1.2vw, 13px);text-align:left"><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-phone" style="color:#c97a7e"></i> 0918-258-3277<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> La Trinidad, Benguet 2601, Philippines</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
 
 <script>
 const pages=['home','about','education','family'];
