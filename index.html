@@ -69,4 +69,58 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .ach-info p{font-size:12px;color:#888;margin-top:4px}
 .ach-view{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;color:#fff;font-weight:600;font-size:13px}
 .ach-card:hover .ach-view{opacity:1}
-.ach-count{color:#777;font-size:12px;text-align:center;margin-top
+.ach-count{color:#777;font-size:12px;text-align:center;margin-top:14px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:10000;align-items:center;justify-content:center;padding:20px}
+.modal.active{display:flex}
+.modal-box{background:#111;border:1px solid var(--pink);border-radius:16px;padding:20px;max-width:500px;width:95%;text-align:center;position:relative}
+.modal-box img{width:100%;max-height:60vh;object-fit:contain;border-radius:8px;margin-bottom:10px;background:#fff}
+.close{position:absolute;top:8px;right:12px;font-size:18px;color:#666;cursor:pointer}
+.side-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:9990;width:52px;height:52px;border-radius:50%;background:var(--pink);color:#000;border:none;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+.side-arrow:disabled{opacity:.25}
+#prevSide{left:12px}#nextSide{right:12px}
+@media (max-width:768px){
+nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
+.page{padding:16px 14px 70px;flex-direction:column !important;gap:18px;align-items:center;text-align:center}
+#about{flex-direction:column !important;align-items:center}
+.about-left,.about-right{width:100%;max-width:100%;flex:none}.about-right{max-width:380px}
+.circle{width:280px;height:280px;min-width:280px}
+.home-text h1{font-size:38px !important;white-space:normal}.home-text h2{font-size:19px !important}.home-text p{font-size:13.5px !important;margin:0 auto}
+.p-wrap{grid-template-columns:1fr}
+.ach-grid{grid-template-columns:repeat(2, 1fr);gap:10px}
+.ach-filter{min-width:0;flex:1;padding:10px 8px;font-size:12px}
+#about,#education,#family{text-align:left}
+.side-arrow{top:auto !important;bottom:14px;transform:none !important;width:42px;height:42px}
+#prevSide{left:14px}#nextSide{right:14px}
+}
+</style>
+</head>
+<body>
+<nav><div class="logo">MyPortfolio</div><div class="links"><a onclick="showPage('home')" id="l-home" class="active">Home</a><a onclick="showPage('about')" id="l-about">Personal Information</a><a onclick="showPage('education')" id="l-education">Achievements</a><a onclick="showPage('family')" id="l-family">Family & Friends</a></div></nav>
+<button class="side-arrow" id="prevSide" onclick="prevPage()"><i class="fas fa-chevron-left"></i></button>
+<button class="side-arrow" id="nextSide" onclick="nextPage()"><i class="fas fa-chevron-right"></i></button>
+<div class="viewport">
+<div id="home" class="page active"><div class="circle"><img src="profile.jpg" onerror="this.src='https://i.pravatar.cc/500?img=26'"></div><div class="home-text"><h1>Hi, it's <span>Hazel</span></h1><h2>I'm a BSIT Student</h2><p>I am <b>BOLD, driven, and eager to learn</b> - ready to contribute real solutions to your company.</p><button class="home-btn" onclick="openContact()"><i class="fas fa-paper-plane"></i> Hire me</button></div></div>
+<div id="about" class="page"><div class="about-left"><h2 class="title">About <span>Me</span></h2><div class="card"><p style="color:#bbb">I'm Hazel Mae Pacasi Nabus, a 1st Year BSIT student at the University of the Cordilleras in Baguio City.</p><p style="color:#bbb;margin-top:10px">I'm building my foundation in Python and Java, with an interest in ERP and web technologies. I have real office experience from SPES 2023 and 2026 under DOLE, where I handled data encoding, filing, and document preparation. I'm also a DOST-SEI scholar with leadership training.</p><p style="color:#bbb;margin-top:10px">I am organized, patient, and persistent - I can help with accurate encoding, filing, and making clear documents and presentations. I'm looking for an internship or entry-level opportunity where I can contribute, learn fast, and grow as an IT professional.</p></div><div class="card" style="margin-top:14px"><h3 style="color:#c97a7e">Personal Information</h3><p style="color:#bbb;line-height:2;margin-top:10px"><b style="color:#fff">Full Name:</b> Nabus, Hazel Mae Pacasi<br><b style="color:#fff">Age:</b> 19 years old<br><b style="color:#fff">Date of Birth:</b> October 10, 2007<br><b style="color:#fff">Sex:</b> Female<br><b style="color:#fff">Civil Status:</b> Single<br><b style="color:#fff">Citizenship:</b> Filipino<br><b style="color:#fff">Religion:</b> Roman Catholic<br><b style="color:#fff">Height:</b> 159 cm<br><b style="color:#fff">Weight:</b> 48 kg<br><b style="color:#fff">Address:</b> Pico, La Trinidad, Benguet<br><b style="color:#fff">Email:</b> hazelnabus7@gmail.com<br><b style="color:#fff">Languages Spoken:</b> English, Tagalog, Ilokano</p></div><h3 style="margin-top:16px;font-size:14px">Hard <span style="color:#c97a7e">Skills</span></h3><div style="margin-top:8px"><span class="skill-tag">Python (Learning)</span><span class="skill-tag">Java (Learning)</span><span class="skill-tag">HTML (Aspiring)</span><span class="skill-tag">CSS (Aspiring)</span><span class="skill-tag">MS Word</span><span class="skill-tag">MS Excel</span><span class="skill-tag">Canva</span><span class="skill-tag">Data Encoding</span><span class="skill-tag">Filing</span><span class="skill-tag">ERP Basics - 2nd Year Goal</span></div><h3 style="margin-top:14px;font-size:14px">Soft <span style="color:#c97a7e">Skills</span></h3><div style="margin-top:8px"><span class="skill-tag">Communication - Deepening</span><span class="skill-tag">Teamwork</span><span class="skill-tag">Patience</span><span class="skill-tag">Problem Solving</span><span class="skill-tag">Persistence</span></div></div><div class="about-right"><img src="profile.jpg" onerror="this.style.display='none'"><button class="btn" style="width:100%;justify-content:center" onclick="openContact()"><i class="fas fa-envelope"></i> Contact Me</button></div></div>
+
+<div id="education" class="page" style="flex-direction:column;align-items:center">
+<h2 class="title" style="text-align:center">My <span>Achievements</span></h2>
+<div class="ach-filter-wrap">
+<button class="ach-filter" onclick="filterAch('all',this)">All <span class="num">7</span></button>
+<button class="ach-filter" onclick="filterAch('academic',this)">Academic <span class="num">4</span></button>
+<button class="ach-filter" onclick="filterAch('training',this)">Training <span class="num">1</span></button>
+<button class="ach-filter" onclick="filterAch('work',this)">Work <span class="num">2</span></button>
+</div>
+<div class="ach-grid" id="achGrid">
+<div class="ach-card" data-cat="academic" onclick="openCert('cert-jhs.jpeg','Junior High School Certificate - BSU Secondary Laboratory School • 2023')"><div class="ach-thumb"><img src="cert-jhs.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=Junior+High+Certificate'"></div><div class="ach-info"><h3>Junior High School Certificate</h3><p>BSU - SLS • Agricultural Science • 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="academic" onclick="openCert('cert-shs-diploma.jpeg','Senior High School Diploma - STEM Strand • BSU Secondary Laboratory School • 2025')"><div class="ach-thumb"><img src="cert-shs-diploma.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=Senior+High+Diploma+STEM'"></div><div class="ach-info"><h3>Senior High School Diploma</h3><p>BSU - SLS • STEM Strand • 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-23-24.jpg','Certificate of Recognition - Leadership • SY 2023-2024 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-23-24.jpg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=Leadership+2023-2024'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2023 - 2024</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-24-25.jpg','Certificate of Recognition - Leadership • SY 2024-2025 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-24-25.jpg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=Leadership+2024-2025'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2024 - 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="training" onclick="openCert('cert-dost.jpg','DOST-SEI Scholars Leadership Camp - Certificate of Participation • Sept 16-20, 2026 • ION Hotel, Baguio City')"><div class="ach-thumb"><img src="cert-dost.jpg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=DOST-SEI+Camp'"></div><div class="ach-info"><h3>DOST-SEI Scholars Leadership Camp</h3><p>Certificate of Participation • Sept 16-20, 2026</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="work" onclick="openCert('cert-spes-23.jpg','Certification - SPES Clerk • 25 Days • LGU La Trinidad • June - July 2023 • Issued Sept 23, 2023')"><div class="ach-thumb"><img src="cert-spes-23.jpg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=SPES+2023+Certification'"></div><div class="ach-info"><h3>Certification - SPES Clerk</h3><p>LGU La Trinidad • 25 Days • June - July 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="work" onclick="openCert('https://via.placeholder.com/600x400/ffffff/c97a7e?text=SPES+2026+-+Certificate+to+be+issued+Dec+17,+2026','SPES 2026 - Clerk • Certificate to be issued on Dec 17, 2026')"><div class="ach-thumb"><img src="cert-spes-26.jpg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=SPES+2026+-+Certificate+to+be+issued+Dec+17,+2026'"></div><div class="ach-info"><h3>SPES 2026 - Clerk</h3><p>DOLE / LGU La Trinidad • Certificate to be issued Dec 17, 2026</p></div><div class="ach-view">👁 View Details</div></div>
+</div>
+<p class="ach-count" id="achCount">Showing 7 achievements</p>
+</div>
+
+<div id="family" class="page" style="flex-direction:column"><h2 class="title">Family & <span>Friends</span></h2><div class="p-wrap"><div class="p-card"><img src="mom.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Mom'"><h3>My Mom</h3><p style="color:#c97a7e">Cristina P. Nabus</p><p style="color:#bbb;margin-top:4px">She is the light and delight of our family. She is a hardworking woman whom I aspire to be like - admired for her patience and persistence.</p></div><div class="p-card"><img src="dad.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Dad'"><h3>My Dad</h3><p style="color:#c97a7e">Robert M. Nabus</p><p style="color:#bbb;margin-top:4px">He was an all-rounder, a jack of all trades. I am grateful to have acquired many of his traits.</p><p style="color:#777">In Loving Memory</p></div><div class="p-card"><img src="family.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=Whole+Family'"><h3>My Whole Family</h3><p style="color:#c97a7e">Nabus Family</p><p style="color:#bbb;margin-top:4px">La Trinidad, Benguet</p></div></div></div>
+</div
