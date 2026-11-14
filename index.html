@@ -57,11 +57,8 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .ach-filter .num{display:none;background:var(--pink);color:#000;font-size:11px;font-weight:700;min-width:22px;height:22px;border-radius:50%;align-items:center;justify-content:center;padding:0 5px}
 .ach-filter.active .num{display:inline-flex;animation:fade .2s ease}
 .ach-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px;width:100%;max-width:1050px;margin:0 auto}
-.ach-card{background:#fff;border-radius:4px;overflow:hidden;cursor:pointer;transition:.25s;position:relative;text-align:left}
-.ach-card:hover{transform:translateY(-5px);box-shadow:0 18px 35px rgba(201,122,126,.35)}
+.ach-card{background:#fff;border-radius:4px;overflow:hidden;cursor:pointer;position:relative;text-align:left}
 .ach-card.hide{display:none}
-.ach-card.pop{animation:pop .35s ease}
-@keyframes pop{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .ach-thumb{width:100%;aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;padding:18px}
 .ach-thumb img{width:100%;height:100%;object-fit:contain}
 .ach-info{padding:14px 14px 16px;background:#000}
@@ -70,13 +67,11 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .ach-view{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;color:#fff;font-weight:600;font-size:13px}
 .ach-card:hover .ach-view{opacity:1}
 .ach-count{color:#777;font-size:12px;text-align:center;margin-top:14px}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:10000;align-items:center;justify-content:center;padding:12px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:10000;align-items:center;justify-content:center;padding:20px}
 .modal.active{display:flex}
-.modal-box{background:#111;border:1px solid var(--pink);border-radius:16px;padding:16px;max-width:920px;width:96%;max-height:94vh;text-align:center;position:relative;display:flex;flex-direction:column;align-items:center;overflow:hidden}
-.modal-box img{width:100%;max-height:78vh;object-fit:contain;border-radius:8px;margin-bottom:10px;background:#fff;cursor:zoom-in}
-.modal-box img.zoomed{max-height:none;width:auto;max-width:none;cursor:zoom-out}
-.close{position:absolute;top:10px;right:14px;font-size:26px;line-height:1;color:#fff;background:#c97a7e;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
-.zoom-hint{font-size:11px;color:#aaa;margin-top:2px}
+.modal-box{background:#111;border:1px solid var(--pink);border-radius:16px;padding:20px;max-width:720px;width:95%;text-align:center;position:relative}
+.modal-box img{width:100%;max-height:82vh;object-fit:contain;border-radius:8px;margin-bottom:10px;background:#fff}
+.close{position:absolute;top:8px;right:12px;font-size:18px;color:#666;cursor:pointer}
 .side-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:9990;width:52px;height:52px;border-radius:50%;background:var(--pink);color:#000;border:none;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
 .side-arrow:disabled{opacity:.25}
 #prevSide{left:12px}#nextSide{right:12px}
@@ -93,8 +88,6 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 #about,#education,#family{text-align:left}
 .side-arrow{top:auto !important;bottom:14px;transform:none !important;width:42px;height:42px}
 #prevSide{left:14px}#nextSide{right:14px}
-.modal-box{width:98%;padding:10px;max-height:92vh}
-.modal-box img{max-height:72vh}
 }
 </style>
 </head>
@@ -128,8 +121,8 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 
 <div id="family" class="page" style="flex-direction:column"><h2 class="title">Family & <span>Friends</span></h2><div class="p-wrap"><div class="p-card"><img src="mom.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Mom'"><h3>My Mom</h3><p style="color:#c97a7e">Cristina P. Nabus</p><p style="color:#bbb;margin-top:4px">She is the light and delight of our family. She is a hardworking woman whom I aspire to be like - admired for her patience and persistence.</p></div><div class="p-card"><img src="dad.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Dad'"><h3>My Dad</h3><p style="color:#c97a7e">Robert M. Nabus</p><p style="color:#bbb;margin-top:4px">He was an all-rounder, a jack of all trades. I am grateful to have acquired many of his traits.</p><p style="color:#777">In Loving Memory</p></div><div class="p-card"><img src="family.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=Whole+Family'"><h3>My Whole Family</h3><p style="color:#c97a7e">Nabus Family</p><p style="color:#bbb;margin-top:4px">La Trinidad, Benguet</p></div></div></div>
 </div>
-<div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src="" onclick="this.classList.toggle('zoomed')"><h3 id="certTitle" style="color:#c97a7e;font-size:13px;margin-top:8px"></h3><p class="zoom-hint">Tap the certificate to zoom in / out</p></div></div>
-<div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" style="max-width:500px" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:13px;text-align:left"><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> Pico, La Trinidad, Benguet 2601, Philippines</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
+<div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src=""><h3 id="certTitle" style="color:#c97a7e;font-size:13px;margin-top:8px"></h3></div></div>
+<div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:13px;text-align:left"><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> Pico, La Trinidad, Benguet 2601, Philippines</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
 <script>
 const pages=['home','about','education','family'];
 let currentPage='home';
@@ -144,7 +137,7 @@ function showPage(id){
 }
 function clearAchActive(){
   document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.ach-card').forEach(card=>{ card.classList.remove('hide'); card.classList.remove('pop'); });
+  document.querySelectorAll('.ach-card').forEach(card=>{ card.classList.remove('hide'); });
   document.getElementById('achCount').innerText='Showing 7 achievements';
 }
 function nextPage(){ let idx=pages.indexOf(currentPage); if(idx < pages.length-1){ showPage(pages[idx+1]); } }
@@ -158,12 +151,8 @@ function filterAch(cat,btn){
   btn.classList.add('active');
   let count=0;
   document.querySelectorAll('.ach-card').forEach((card,i)=>{
-    card.classList.remove('pop');
     if(cat==='all' || card.dataset.cat===cat){
       card.classList.remove('hide');
-      void card.offsetWidth;
-      card.classList.add('pop');
-      card.style.animationDelay=(i*0.05)+'s';
       count++;
     } else { card.classList.add('hide'); }
   });
@@ -174,7 +163,7 @@ document.getElementById('education').addEventListener('click', function(e){
     document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
   }
 });
-function openCert(src,title){ event.stopPropagation(); document.getElementById('certImg').src=src; document.getElementById('certImg').classList.remove('zoomed'); document.getElementById('certTitle').innerText=title; document.getElementById('certModal').classList.add('active'); }
+function openCert(src,title){ event.stopPropagation(); document.getElementById('certImg').src=src; document.getElementById('certTitle').innerText=title; document.getElementById('certModal').classList.add('active'); }
 function openContact(){document.getElementById('contactModal').classList.add('active');}
 function closeModals(){ document.getElementById('certModal').classList.remove('active'); document.getElementById('contactModal').classList.remove('active'); }
 </script>
