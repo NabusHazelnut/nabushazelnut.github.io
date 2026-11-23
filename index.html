@@ -143,17 +143,21 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:16px clamp(68px, 6vw, 88px);
+  padding:14px clamp(68px, 6vw, 88px);
 }
 #family .title{
   text-align:center;
-  margin-bottom:18px;
+  margin-bottom:14px;
 }
-.p-wrap{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px;width:100%;max-width:1120px}
-.p-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;display:flex;flex-direction:column}
-.p-card img{width:100%;height:clamp(170px, 22vh, 220px);object-fit:cover;border-radius:10px;border:1px solid var(--pink);margin-bottom:10px;background:#222}
-.p-card h3{font-size:clamp(14px, 1.4vw, 16px)}
-.p-card p{font-size:clamp(11.5px, 1.05vw, 13px);line-height:1.6}
+.p-wrap{display:grid;grid-template-columns:repeat(4, 1fr);gap:14px;width:100%;max-width:1240px}
+.p-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px;text-align:center;display:flex;flex-direction:column;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.p-card:hover{transform:translateY(-4px);border-color:var(--pink);box-shadow:0 12px 26px rgba(201,122,126,.25)}
+.p-photo-wrap{position:relative;width:100%;height:clamp(175px, 25vh, 230px);border-radius:10px;overflow:hidden;border:1px solid var(--pink);margin-bottom:10px;background:#222}
+.p-card img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
+.p-view{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;color:#fff;font-weight:600;font-size:12px;gap:6px}
+.p-card:hover .p-view{opacity:1}
+.p-card h3{font-size:clamp(13.5px, 1.3vw, 15.5px);color:var(--pink);margin-bottom:4px}
+.p-card p{font-size:clamp(11px, 0.98vw, 12.2px);line-height:1.5}
 
 .btn{margin-top:18px;display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:clamp(10px, 1vw, 12px) clamp(20px, 2.5vw, 28px);border-radius:28px;font-size:clamp(12px, 1.2vw, 13.5px);font-weight:600;cursor:pointer;background:transparent}
 .btn:hover{background:var(--pink);color:#000}
@@ -200,14 +204,17 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .side-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:9990;width:52px;height:52px;border-radius:50%;background:var(--pink);color:#000;border:none;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
 .side-arrow:disabled{opacity:.25}
 #prevSide{left:12px}#nextSide{right:12px}
-/* BIG CERTIFICATE VIEW */
+/* BIG CERTIFICATE / PHOTO VIEW */
 #certModal .modal-box{max-width:920px;width:96%;padding:14px 14px 10px;background:#0a0a0a}
-#certImg{width:100%;max-height:82vh;object-fit:contain;border-radius:6px;margin-bottom:6px;background:#fff;cursor:zoom-in;transition:transform .25s ease}
+#certImg{width:100%;max-height:82vh;object-fit:contain;border-radius:6px;margin-bottom:6px;background:#111;cursor:zoom-in;transition:transform .25s ease}
 #certImg.zoomed{transform:scale(1.8);cursor:zoom-out}
 #certTitle{color:#c97a7e !important;font-size:13px !important;margin:6px 0 2px !important}
 .cert-hint{color:#888;font-size:11px;margin-bottom:2px}
 #certModal .close{top:6px;right:10px;background:#ff5c5c;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2}
 
+@media (max-width:1100px){
+  .p-wrap{grid-template-columns:repeat(2, 1fr)}
+}
 @media (max-width:1040px){
   #about{height:auto;overflow-y:auto;align-items:flex-start;padding:20px 64px}
   .about-left{grid-template-columns:1fr}
@@ -228,6 +235,7 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 .home-text h1{font-size:38px !important;white-space:normal}.home-text h2{font-size:19px !important}.home-text p{font-size:13.5px !important;margin:0 auto}
 #family{justify-content:flex-start;padding:16px 14px 70px}
 .p-wrap{grid-template-columns:1fr}
+.p-photo-wrap{height:210px}
 #education{height:auto;overflow-y:auto;justify-content:flex-start;padding:16px 14px 70px}
 .ach-grid{grid-template-columns:repeat(2, 1fr);gap:10px}
 .ach-thumb{aspect-ratio:4/3;max-height:none}
@@ -328,29 +336,43 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 <div id="family" class="page">
   <h2 class="title">Family & <span>Friends</span></h2>
   <div class="p-wrap">
-    <div class="p-card">
-      <img src="mom.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Mom'">
+    <div class="p-card" onclick="openCert('mom.jpg','My Mom')">
+      <div class="p-photo-wrap">
+        <img src="mom.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Mom'">
+        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
+      </div>
       <h3>My Mom</h3>
-      <p style="color:#c97a7e;font-weight:600">Cristina P. Nabus</p>
-      <p style="color:#bbb;margin-top:6px">She made sure we had just as much as any kid could ask for, even with the little she had. Beyond being our mama, she is a good and beautiful soul who has given us nothing but unconditional love and happiness.</p>
+      <p style="color:#bbb">She made sure we had just as much as any kid could ask for, even with the little she had. Beyond being our mama, she is a good and beautiful soul who has given us nothing but unconditional love and happiness.</p>
     </div>
-    <div class="p-card">
-      <img src="dad.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Dad'">
+    <div class="p-card" onclick="openCert('dad.jpg','My Dad — In Loving Memory')">
+      <div class="p-photo-wrap">
+        <img src="dad.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Dad'">
+        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
+      </div>
       <h3>My Dad</h3>
-      <p style="color:#c97a7e;font-weight:600">Robert M. Nabus</p>
-      <p style="color:#bbb;margin-top:6px">I was truly a papa's girl. Though his time with us was cut short, he remains my biggest inspiration. I strive every day to be as strong and as capable a jack-of-all-trades as he was.</p>
-      <p style="color:#777;margin-top:6px;font-size:11.5px">In Loving Memory</p>
+      <p style="color:#bbb">I was truly a papa's girl. Though his time with us was cut short, he remains my biggest inspiration. I strive every day to be as strong and as capable a jack-of-all-trades as he was.</p>
+      <p style="color:#777;margin-top:4px;font-size:11px">In Loving Memory</p>
     </div>
-    <div class="p-card">
-      <img src="family.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Siblings'">
+    <div class="p-card" onclick="openCert('family.jpg','My Siblings')">
+      <div class="p-photo-wrap">
+        <img src="family.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Siblings'">
+        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
+      </div>
       <h3>My Siblings</h3>
-      <p style="color:#c97a7e;font-weight:600">Nabus Siblings</p>
-      <p style="color:#bbb;margin-top:6px">The people who give me both stress and endless laughter on a daily basis and I love them so much for it.</p>
+      <p style="color:#bbb">The people who give me both stress and endless laughter on a daily basis and I love them so much for it.</p>
+    </div>
+    <div class="p-card" onclick="openCert('friends.jpg','My Friends')">
+      <div class="p-photo-wrap">
+        <img src="friends.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Friends'">
+        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
+      </div>
+      <h3>My Friends</h3>
+      <p style="color:#bbb">Grateful for the friends who walked into my life and made every day brighter, warmer, and a whole lot livelier.</p>
     </div>
   </div>
 </div>
 </div>
-<div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src="" onclick="this.classList.toggle('zoomed')"><h3 id="certTitle"></h3><p class="cert-hint">Tap the certificate to zoom in / out</p></div></div>
+<div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src="" onclick="this.classList.toggle('zoomed')"><h3 id="certTitle"></h3><p class="cert-hint">Tap the photo or certificate to zoom in / out</p></div></div>
 <div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:13px;text-align:left"><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> Pico, La Trinidad, Benguet 2601, Philippines</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
 <script>
 const pages=['home','about','education','family'];
