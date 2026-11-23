@@ -24,10 +24,104 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .page.active{display:flex !important;animation:fade .3s ease}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 #home{justify-content:center;align-items:center;gap:clamp(30px, 6vw, 80px);padding:clamp(20px, 4vw, 40px) clamp(16px, 6vw, 7%)}
-#about{flex-direction:row !important;gap:32px !important;align-items:flex-start}
-.about-left{flex:1;min-width:0}
-.about-right{flex:0 0 340px;width:340px;max-width:340px}
-.about-right img{width:100%;border-radius:14px;border:1px solid #c97a7e;display:block;object-fit:cover}
+
+/* NO-SCROLL COMPACT PERSONAL INFORMATION SECTION */
+#about{
+  flex-direction:row !important;
+  gap:22px !important;
+  align-items:center;
+  justify-content:center;
+  padding:14px clamp(68px, 6vw, 88px);
+  overflow:hidden;
+  height:calc(100vh - clamp(60px, 8vh, 80px));
+}
+.about-left{
+  flex:1;
+  min-width:0;
+  max-width:960px;
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  gap:12px 16px;
+  align-content:center;
+}
+#about .title{
+  grid-column:1 / -1;
+  font-size:clamp(20px, 2.2vw, 26px);
+  margin-bottom:0;
+}
+#about .card{
+  padding:12px 15px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+#about .bio-card p{
+  font-size:clamp(11.5px, 1vw, 12.8px);
+  line-height:1.52;
+  color:#bbb;
+}
+#about .bio-card p + p{
+  margin-top:7px;
+}
+.info-card h3{
+  color:#c97a7e;
+  font-size:14px;
+  margin-bottom:8px;
+}
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px 10px;
+  font-size:clamp(11px, 0.95vw, 12.2px);
+  line-height:1.45;
+  color:#bbb;
+}
+.info-grid div b{color:#fff}
+.info-span{grid-column:1 / -1}
+.skills-box{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:10px 14px;
+  border-radius:12px;
+}
+.skills-box h3{
+  font-size:13px;
+  margin-bottom:6px;
+}
+.skills-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+#about .skill-tag{
+  padding:3px 9px;
+  font-size:10.5px;
+  margin:0;
+}
+.about-right{
+  flex:0 0 245px;
+  width:245px;
+  max-width:245px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.about-right img{
+  width:100%;
+  max-height:54vh;
+  border-radius:14px;
+  border:1px solid #c97a7e;
+  display:block;
+  object-fit:cover;
+  object-position:top;
+}
+.about-right .btn{
+  margin-top:12px;
+  width:100%;
+  justify-content:center;
+  padding:10px 18px;
+}
+
 .circle{width:clamp(300px, 38vw, 560px);height:clamp(300px, 38vw, 560px);min-width:clamp(300px, 38vw, 560px);border-radius:50%;background:#fff;overflow:hidden;border:2px solid var(--pink);box-shadow:0 0 80px rgba(180,0,0,.35), 0 0 140px rgba(201,122,126,.35);flex-shrink:0;margin:auto 0}
 .circle img{width:100%;height:100%;object-fit:cover;object-position:top}
 .home-text{flex:1;max-width:640px}
@@ -43,33 +137,61 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .card{background:var(--card);border:1px solid var(--border);padding:clamp(14px, 2vw, 18px);border-radius:12px}
 .card p{font-size:clamp(12.5px, 1.2vw, 14px);line-height:1.9}
 .skill-tag{background:var(--card);border:1px solid var(--pink);color:var(--pink);padding:clamp(5px, .8vw, 6px) clamp(10px, 1.2vw, 14px);border-radius:20px;font-size:clamp(10px, 1.1vw, 11.5px);font-weight:500;display:inline-block;margin:3px}
-.p-wrap{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:14px;width:100%}
-.p-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
-.p-card img{width:100%;height:clamp(150px, 18vw, 175px);object-fit:cover;border-radius:10px;border:1px solid var(--pink);margin-bottom:8px;background:#222}
-.p-card h3{font-size:clamp(13px, 1.4vw, 15px)}
-.p-card p{font-size:clamp(11px, 1.1vw, 12.5px);line-height:1.6}
+
+/* FAMILY & FRIENDS SECTION */
+#family{
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:16px clamp(68px, 6vw, 88px);
+}
+#family .title{
+  text-align:center;
+  margin-bottom:18px;
+}
+.p-wrap{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px;width:100%;max-width:1120px}
+.p-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;display:flex;flex-direction:column}
+.p-card img{width:100%;height:clamp(170px, 22vh, 220px);object-fit:cover;border-radius:10px;border:1px solid var(--pink);margin-bottom:10px;background:#222}
+.p-card h3{font-size:clamp(14px, 1.4vw, 16px)}
+.p-card p{font-size:clamp(11.5px, 1.05vw, 13px);line-height:1.6}
+
 .btn{margin-top:18px;display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:clamp(10px, 1vw, 12px) clamp(20px, 2.5vw, 28px);border-radius:28px;font-size:clamp(12px, 1.2vw, 13.5px);font-weight:600;cursor:pointer;background:transparent}
 .btn:hover{background:var(--pink);color:#000}
-.ach-filter-wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;width:100%;margin:6px 0 22px}
-.ach-filter{background:#b8b8b8;color:#fff;border:none;padding:12px 18px;border-radius:6px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;cursor:pointer;min-width:160px;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+
+/* NO-SCROLL COMPACT ACHIEVEMENTS SECTION */
+#education{
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:12px clamp(64px, 6vw, 84px);
+  overflow:hidden;
+  height:calc(100vh - clamp(60px, 8vh, 80px));
+}
+#education .title{
+  font-size:clamp(20px, 2.2vw, 26px);
+  margin-bottom:8px;
+}
+.ach-filter-wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%;margin:0 0 12px}
+.ach-filter{background:#b8b8b8;color:#fff;border:none;padding:7px 14px;border-radius:6px;font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:500;cursor:pointer;min-width:120px;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .ach-filter:hover{background:#d1d1d1}
 .ach-filter.active{background:#fff;color:#000;font-weight:600}
-.ach-filter .num{display:none;background:var(--pink);color:#000;font-size:11px;font-weight:700;min-width:22px;height:22px;border-radius:50%;align-items:center;justify-content:center;padding:0 5px}
+.ach-filter .num{display:none;background:var(--pink);color:#000;font-size:10px;font-weight:700;min-width:19px;height:19px;border-radius:50%;align-items:center;justify-content:center;padding:0 4px}
 .ach-filter.active .num{display:inline-flex;animation:fade .2s ease}
-.ach-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px;width:100%;max-width:1050px;margin:0 auto}
-.ach-card{background:#fff;border-radius:4px;overflow:hidden;cursor:pointer;transition:.25s;position:relative;text-align:left}
-.ach-card:hover{transform:translateY(-5px);box-shadow:0 18px 35px rgba(201,122,126,.35)}
+.ach-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;width:100%;max-width:1160px;margin:0 auto}
+.ach-card{background:#fff;border-radius:6px;overflow:hidden;cursor:pointer;transition:.25s;position:relative;text-align:left;border:1px solid #222;display:flex;flex-direction:column}
+.ach-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(201,122,126,.35);border-color:var(--pink)}
 .ach-card.hide{display:none}
 .ach-card.pop{animation:pop .35s ease}
 @keyframes pop{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.ach-thumb{width:100%;aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;padding:18px}
+.ach-thumb{width:100%;aspect-ratio:16/10;max-height:145px;background:#fff;display:flex;align-items:center;justify-content:center;padding:8px}
 .ach-thumb img{width:100%;height:100%;object-fit:contain}
-.ach-info{padding:14px 14px 16px;background:#000}
-.ach-info h3{font-size:14px;font-weight:700;color:#fff;line-height:1.3}
-.ach-info p{font-size:12px;color:#888;margin-top:4px}
-.ach-view{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;color:#fff;font-weight:600;font-size:13px}
+.ach-info{padding:8px 10px 10px;background:#0d0d0d;flex:1;display:flex;flex-direction:column;justify-content:center}
+.ach-info h3{font-size:12.5px;font-weight:700;color:#fff;line-height:1.25;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.ach-info p{font-size:11px;color:#999;margin-top:3px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.ach-view{position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;color:#fff;font-weight:600;font-size:12px}
 .ach-card:hover .ach-view{opacity:1}
-.ach-count{color:#777;font-size:12px;text-align:center;margin-top:14px}
+.ach-count{color:#777;font-size:11.5px;text-align:center;margin-top:10px}
+
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:10000;align-items:center;justify-content:center;padding:20px}
 .modal.active{display:flex}
 .modal-box{background:#111;border:1px solid var(--pink);border-radius:16px;padding:20px;max-width:500px;width:95%;text-align:center;position:relative}
@@ -78,23 +200,38 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .side-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:9990;width:52px;height:52px;border-radius:50%;background:var(--pink);color:#000;border:none;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
 .side-arrow:disabled{opacity:.25}
 #prevSide{left:12px}#nextSide{right:12px}
-/* BIG CERTIFICATE VIEW - 2nd pic style */
+/* BIG CERTIFICATE VIEW */
 #certModal .modal-box{max-width:920px;width:96%;padding:14px 14px 10px;background:#0a0a0a}
 #certImg{width:100%;max-height:82vh;object-fit:contain;border-radius:6px;margin-bottom:6px;background:#fff;cursor:zoom-in;transition:transform .25s ease}
 #certImg.zoomed{transform:scale(1.8);cursor:zoom-out}
 #certTitle{color:#c97a7e !important;font-size:13px !important;margin:6px 0 2px !important}
 .cert-hint{color:#888;font-size:11px;margin-bottom:2px}
 #certModal .close{top:6px;right:10px;background:#ff5c5c;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2}
+
+@media (max-width:1040px){
+  #about{height:auto;overflow-y:auto;align-items:flex-start;padding:20px 64px}
+  .about-left{grid-template-columns:1fr}
+  .about-right{flex:0 0 220px;width:220px}
+}
+@media (max-width:980px){
+  #education{height:auto;overflow-y:auto;justify-content:flex-start;padding:18px 54px}
+  .ach-grid{grid-template-columns:repeat(3, 1fr)}
+}
 @media (max-width:768px){
 nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 .page{padding:16px 14px 70px;flex-direction:column !important;gap:18px;align-items:center;text-align:center}
-#about{flex-direction:column !important;align-items:center}
-.about-left,.about-right{width:100%;max-width:100%;flex:none}.about-right{max-width:380px}
+#about{height:auto;overflow-y:auto;flex-direction:column !important;align-items:center;padding:16px 14px 70px}
+.about-left,.about-right{width:100%;max-width:100%;flex:none}.about-right{max-width:340px}
+.about-right img{max-height:none}
+.info-grid{grid-template-columns:1fr}
 .circle{width:280px;height:280px;min-width:280px}
 .home-text h1{font-size:38px !important;white-space:normal}.home-text h2{font-size:19px !important}.home-text p{font-size:13.5px !important;margin:0 auto}
+#family{justify-content:flex-start;padding:16px 14px 70px}
 .p-wrap{grid-template-columns:1fr}
+#education{height:auto;overflow-y:auto;justify-content:flex-start;padding:16px 14px 70px}
 .ach-grid{grid-template-columns:repeat(2, 1fr);gap:10px}
-.ach-filter{min-width:0;flex:1;padding:10px 8px;font-size:12px}
+.ach-thumb{aspect-ratio:4/3;max-height:none}
+.ach-filter{min-width:0;flex:1;padding:9px 8px;font-size:12px}
 #about,#education,#family{text-align:left}
 .side-arrow{top:auto !important;bottom:14px;transform:none !important;width:42px;height:42px}
 #prevSide{left:14px}#nextSide{right:14px}
@@ -110,9 +247,65 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 <button class="side-arrow" id="nextSide" onclick="nextPage()"><i class="fas fa-chevron-right"></i></button>
 <div class="viewport">
 <div id="home" class="page active"><div class="circle"><img src="profile.jpg" onerror="this.src='https://i.pravatar.cc/500?img=26'"></div><div class="home-text"><h1>Hi, it's <span>Hazel</span></h1><h2>I'm a BSIT Student</h2><p>I am <b>BOLD, driven, and eager to learn</b> - ready to contribute real solutions to your company.</p><button class="home-btn" onclick="openContact()"><i class="fas fa-paper-plane"></i> Hire me</button></div></div>
-<div id="about" class="page"><div class="about-left"><h2 class="title">About <span>Me</span></h2><div class="card"><p style="color:#bbb">I'm Hazel Mae Pacasi Nabus, a 1st Year BSIT student at the University of the Cordilleras in Baguio City.</p><p style="color:#bbb;margin-top:10px">I'm building my foundation in Python and Java, with an interest in ERP and web technologies. I have real office experience from SPES 2023 and 2026 under DOLE, where I handled data encoding, filing, and document preparation. I'm also a DOST-SEI scholar with leadership training.</p><p style="color:#bbb;margin-top:10px">I am organized, patient, and persistent - I can help with accurate encoding, filing, and making clear documents and presentations. I'm looking for an internship or entry-level opportunity where I can contribute, learn fast, and grow as an IT professional.</p></div><div class="card" style="margin-top:14px"><h3 style="color:#c97a7e">Personal Information</h3><p style="color:#bbb;line-height:2;margin-top:10px"><b style="color:#fff">Full Name:</b> Nabus, Hazel Mae Pacasi<br><b style="color:#fff">Age:</b> 19 years old<br><b style="color:#fff">Date of Birth:</b> October 10, 2007<br><b style="color:#fff">Sex:</b> Female<br><b style="color:#fff">Civil Status:</b> Single<br><b style="color:#fff">Citizenship:</b> Filipino<br><b style="color:#fff">Religion:</b> Roman Catholic<br><b style="color:#fff">Height:</b> 159 cm<br><b style="color:#fff">Weight:</b> 48 kg<br><b style="color:#fff">Address:</b> Pico, La Trinidad, Benguet<br><b style="color:#fff">Email:</b> hazelnabus7@gmail.com<br><b style="color:#fff">Languages Spoken:</b> English, Tagalog, Ilokano</p></div><h3 style="margin-top:16px;font-size:14px">Hard <span style="color:#c97a7e">Skills</span></h3><div style="margin-top:8px"><span class="skill-tag">Python (Learning)</span><span class="skill-tag">Java (Learning)</span><span class="skill-tag">HTML (Aspiring)</span><span class="skill-tag">CSS (Aspiring)</span><span class="skill-tag">MS Word</span><span class="skill-tag">MS Excel</span><span class="skill-tag">Canva</span><span class="skill-tag">Data Encoding</span><span class="skill-tag">Filing</span><span class="skill-tag">ERP Basics - 2nd Year Goal</span></div><h3 style="margin-top:14px;font-size:14px">Soft <span style="color:#c97a7e">Skills</span></h3><div style="margin-top:8px"><span class="skill-tag">Communication - Deepening</span><span class="skill-tag">Teamwork</span><span class="skill-tag">Patience</span><span class="skill-tag">Problem Solving</span><span class="skill-tag">Persistence</span></div></div><div class="about-right"><img src="profile.jpg" onerror="this.style.display='none'"><button class="btn" style="width:100%;justify-content:center" onclick="openContact()"><i class="fas fa-envelope"></i> Contact Me</button></div></div>
 
-<div id="education" class="page" style="flex-direction:column;align-items:center">
+<div id="about" class="page">
+  <div class="about-left">
+    <h2 class="title">About <span>Me</span></h2>
+    <div class="card bio-card">
+      <p>I'm Hazel Mae Pacasi Nabus, a 1st Year BSIT student at the University of the Cordilleras in Baguio City.</p>
+      <p>I'm building my foundation in Python and Java, with an interest in ERP and web technologies. I have real office experience from SPES 2023 and 2026 under DOLE, where I handled data encoding, filing, and document preparation. I'm also a DOST-SEI scholar with leadership training.</p>
+      <p>I am organized, patient, and persistent - I can help with accurate encoding, filing, and making clear documents and presentations. I'm looking for an internship or entry-level opportunity where I can contribute, learn fast, and grow as an IT professional.</p>
+    </div>
+    <div class="card info-card">
+      <h3>Personal Information</h3>
+      <div class="info-grid">
+        <div class="info-span"><b>Full Name:</b> Nabus, Hazel Mae Pacasi</div>
+        <div><b>Age:</b> 19 years old</div>
+        <div><b>Sex:</b> Female</div>
+        <div class="info-span"><b>Date of Birth:</b> October 10, 2007</div>
+        <div><b>Civil Status:</b> Single</div>
+        <div><b>Citizenship:</b> Filipino</div>
+        <div><b>Height:</b> 159 cm</div>
+        <div><b>Weight:</b> 48 kg</div>
+        <div class="info-span"><b>Religion:</b> Roman Catholic</div>
+        <div class="info-span"><b>Address:</b> Pico, La Trinidad, Benguet</div>
+        <div class="info-span"><b>Email:</b> hazelnabus7@gmail.com</div>
+        <div class="info-span"><b>Languages:</b> English, Tagalog, Ilokano</div>
+      </div>
+    </div>
+    <div class="skills-box">
+      <h3>Hard <span style="color:#c97a7e">Skills</span></h3>
+      <div class="skills-list">
+        <span class="skill-tag">Python (Learning)</span>
+        <span class="skill-tag">Java (Learning)</span>
+        <span class="skill-tag">HTML (Aspiring)</span>
+        <span class="skill-tag">CSS (Aspiring)</span>
+        <span class="skill-tag">MS Word</span>
+        <span class="skill-tag">MS Excel</span>
+        <span class="skill-tag">Canva</span>
+        <span class="skill-tag">Data Encoding</span>
+        <span class="skill-tag">Filing</span>
+        <span class="skill-tag">ERP Basics - 2nd Year Goal</span>
+      </div>
+    </div>
+    <div class="skills-box">
+      <h3>Soft <span style="color:#c97a7e">Skills</span></h3>
+      <div class="skills-list">
+        <span class="skill-tag">Communication - Deepening</span>
+        <span class="skill-tag">Teamwork</span>
+        <span class="skill-tag">Patience</span>
+        <span class="skill-tag">Problem Solving</span>
+        <span class="skill-tag">Persistence</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <img src="profile.jpg" onerror="this.style.display='none'">
+    <button class="btn" onclick="openContact()"><i class="fas fa-envelope"></i> Contact Me</button>
+  </div>
+</div>
+
+<div id="education" class="page">
 <h2 class="title" style="text-align:center">My <span>Achievements</span></h2>
 <div class="ach-filter-wrap">
 <button class="ach-filter" onclick="filterAch('all',this)">All <span class="num">7</span></button>
@@ -121,18 +314,41 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 <button class="ach-filter" onclick="filterAch('work',this)">Work <span class="num">2</span></button>
 </div>
 <div class="ach-grid" id="achGrid">
-<div class="ach-card" data-cat="academic" onclick="openCert('cert-jhs.jpeg','Junior High School Certificate - BSU Secondary Laboratory School • 2023')"><div class="ach-thumb"><img src="cert-jhs.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=Junior+High+Certificate'"></div><div class="ach-info"><h3>Junior High School Certificate</h3><p>BSU - SLS • Agricultural Science • 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="academic" onclick="openCert('cert-shs-diploma.jpeg','Senior High School Diploma - STEM Strand • BSU Secondary Laboratory School • 2025')"><div class="ach-thumb"><img src="cert-shs-diploma.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=Senior+High+Diploma+STEM'"></div><div class="ach-info"><h3>Senior High School Diploma</h3><p>BSU - SLS • STEM Strand • 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-23-24.jpeg','Certificate of Recognition - Leadership • SY 2023-2024 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-23-24.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=Leadership+2023-2024'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2023 - 2024</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-24-25.jpeg','Certificate of Recognition - Leadership • SY 2024-2025 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-24-25.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=Leadership+2024-2025'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2024 - 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="training" onclick="openCert('cert-dost.jpeg','DOST-SEI Scholars Leadership Camp - Certificate of Participation • Sept 16-20, 2026 • ION Hotel, Baguio City')"><div class="ach-thumb"><img src="cert-dost.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=DOST-SEI+Camp'"></div><div class="ach-info"><h3>DOST-SEI Scholars Leadership Camp</h3><p>Certificate of Participation • Sept 16-20, 2026</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="work" onclick="openCert('cert-spes-23.jpeg','Certification - SPES Clerk • 25 Days • LGU La Trinidad • June - July 2023 • Issued Sept 23, 2023')"><div class="ach-thumb"><img src="cert-spes-23.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=SPES+2023+Certification'"></div><div class="ach-info"><h3>Certification - SPES Clerk</h3><p>LGU La Trinidad • 25 Days • June - July 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="work" onclick="openCert('https://via.placeholder.com/600x400/ffffff/c97a7e?text=SPES+2026+-+Certificate+to+be+issued+Dec+17,+2026','SPES 2026 - Clerk • Certificate to be issued on Dec 17, 2026')"><div class="ach-thumb"><img src="cert-spes-26.jpeg" onerror="this.src='https://via.placeholder.com/400x400/ffffff/c97a7e?text=SPES+2026+-+Certificate+to+be+issued+Dec+17,+2026'"></div><div class="ach-info"><h3>SPES 2026 - Clerk</h3><p>DOLE / LGU La Trinidad • Certificate to be issued Dec 17, 2026</p></div><div class="ach-view">👁 View Details</div></div>
+<div class="ach-card" data-cat="academic" onclick="openCert('cert-jhs.jpeg','Junior High School Certificate - BSU Secondary Laboratory School • 2023')"><div class="ach-thumb"><img src="cert-jhs.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Junior+High+Certificate'"></div><div class="ach-info"><h3>Junior High School Certificate</h3><p>BSU - SLS • Agricultural Science • 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="academic" onclick="openCert('cert-shs-diploma.jpeg','Senior High School Diploma - STEM Strand • BSU Secondary Laboratory School • 2025')"><div class="ach-thumb"><img src="cert-shs-diploma.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Senior+High+Diploma+STEM'"></div><div class="ach-info"><h3>Senior High School Diploma</h3><p>BSU - SLS • STEM Strand • 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-23-24.jpeg','Certificate of Recognition - Leadership • SY 2023-2024 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-23-24.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2023-2024'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2023 - 2024</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-24-25.jpeg','Certificate of Recognition - Leadership • SY 2024-2025 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-24-25.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2024-2025'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2024 - 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="training" onclick="openCert('cert-dost.jpeg','DOST-SEI Scholars Leadership Camp - Certificate of Participation • Sept 16-20, 2026 • ION Hotel, Baguio City')"><div class="ach-thumb"><img src="cert-dost.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=DOST-SEI+Camp'"></div><div class="ach-info"><h3>DOST-SEI Scholars Leadership Camp</h3><p>Certificate of Participation • Sept 16-20, 2026</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="work" onclick="openCert('cert-spes-23.jpeg','Certification - SPES Clerk • 25 Days • LGU La Trinidad • June - July 2023 • Issued Sept 23, 2023')"><div class="ach-thumb"><img src="cert-spes-23.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2023+Certification'"></div><div class="ach-info"><h3>Certification - SPES Clerk</h3><p>LGU La Trinidad • 25 Days • June - July 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
+<div class="ach-card" data-cat="work" onclick="openCert('https://via.placeholder.com/600x400/ffffff/c97a7e?text=SPES+2026+-+Certificate+to+be+issued+Dec+17,+2026','SPES 2026 - Clerk • Certificate to be issued on Dec 17, 2026')"><div class="ach-thumb"><img src="cert-spes-26.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2026+-+Dec+17,+2026'"></div><div class="ach-info"><h3>SPES 2026 - Clerk</h3><p>DOLE / LGU La Trinidad • Issued Dec 17, 2026</p></div><div class="ach-view">👁 View Details</div></div>
 </div>
 <p class="ach-count" id="achCount">Showing 7 achievements</p>
 </div>
 
-<div id="family" class="page" style="flex-direction:column"><h2 class="title">Family & <span>Friends</span></h2><div class="p-wrap"><div class="p-card"><img src="mom.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Mom'"><h3>My Mom</h3><p style="color:#c97a7e">Cristina P. Nabus</p><p style="color:#bbb;margin-top:4px">She is the light and delight of our family. She is a hardworking woman whom I aspire to be like - admired for her patience and persistence.</p></div><div class="p-card"><img src="dad.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Dad'"><h3>My Dad</h3><p style="color:#c97a7e">Robert M. Nabus</p><p style="color:#bbb;margin-top:4px">He was an all-rounder, a jack of all trades. I am grateful to have acquired many of his traits.</p><p style="color:#777">In Loving Memory</p></div><div class="p-card"><img src="family.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=Whole+Family'"><h3>My Whole Family</h3><p style="color:#c97a7e">Nabus Family</p><p style="color:#bbb;margin-top:4px">La Trinidad, Benguet</p></div></div></div>
+<div id="family" class="page">
+  <h2 class="title">Family & <span>Friends</span></h2>
+  <div class="p-wrap">
+    <div class="p-card">
+      <img src="mom.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Mom'">
+      <h3>My Mom</h3>
+      <p style="color:#c97a7e;font-weight:600">Cristina P. Nabus</p>
+      <p style="color:#bbb;margin-top:6px">She made sure we had just as much as any kid could ask for, even with the little she had. Beyond being our mama, she is a good and beautiful soul who has given us nothing but unconditional love and happiness.</p>
+    </div>
+    <div class="p-card">
+      <img src="dad.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Dad'">
+      <h3>My Dad</h3>
+      <p style="color:#c97a7e;font-weight:600">Robert M. Nabus</p>
+      <p style="color:#bbb;margin-top:6px">I was truly a papa's girl. Though his time with us was cut short, he remains my biggest inspiration. I strive every day to be as strong and as capable a jack-of-all-trades as he was.</p>
+      <p style="color:#777;margin-top:6px;font-size:11.5px">In Loving Memory</p>
+    </div>
+    <div class="p-card">
+      <img src="family.jpg" onerror="this.src='https://via.placeholder.com/280x170/111/c97a7e?text=My+Siblings'">
+      <h3>My Siblings</h3>
+      <p style="color:#c97a7e;font-weight:600">Nabus Siblings</p>
+      <p style="color:#bbb;margin-top:6px">The people who give me both stress and endless laughter on a daily basis and I love them so much for it.</p>
+    </div>
+  </div>
+</div>
 </div>
 <div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src="" onclick="this.classList.toggle('zoomed')"><h3 id="certTitle"></h3><p class="cert-hint">Tap the certificate to zoom in / out</p></div></div>
 <div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:13px;text-align:left"><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> Pico, La Trinidad, Benguet 2601, Philippines</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
@@ -140,18 +356,18 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 const pages=['home','about','education','family'];
 let currentPage='home';
 function showPage(id){
-  currentPage=id;
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.links a').forEach(a=>a.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.getElementById('l-'+id).classList.add('active');
-  updateNav(); window.scrollTo(0,0);
-  if(id==='education'){ clearAchActive(); }
+  currentPage=id;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('l-'+id).classList.add('active');
+  updateNav(); window.scrollTo(0,0);
+  if(id==='education'){ clearAchActive(); }
 }
 function clearAchActive(){
-  document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.ach-card').forEach(card=>{ card.classList.remove('hide'); card.classList.remove('pop'); });
-  document.getElementById('achCount').innerText='Showing 7 achievements';
+  document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.ach-card').forEach(card=>{ card.classList.remove('hide'); card.classList.remove('pop'); });
+  document.getElementById('achCount').innerText='Showing 7 achievements';
 }
 function nextPage(){ let idx=pages.indexOf(currentPage); if(idx < pages.length-1){ showPage(pages[idx+1]); } }
 function prevPage(){ let idx=pages.indexOf(currentPage); if(idx > 0){ showPage(pages[idx-1]); } }
@@ -159,26 +375,26 @@ function updateNav(){ let idx=pages.indexOf(currentPage); document.getElementByI
 document.addEventListener('keydown', e=>{ if(e.key==='ArrowRight') nextPage(); if(e.key==='ArrowLeft') prevPage(); });
 updateNav();
 function filterAch(cat,btn){
-  event.stopPropagation();
-  document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  let count=0;
-  document.querySelectorAll('.ach-card').forEach((card,i)=>{
-    card.classList.remove('pop');
-    if(cat==='all' || card.dataset.cat===cat){
-      card.classList.remove('hide');
-      void card.offsetWidth;
-      card.classList.add('pop');
-      card.style.animationDelay=(i*0.05)+'s';
-      count++;
-    } else { card.classList.add('hide'); }
-  });
-  document.getElementById('achCount').innerText='Showing '+count+' achievement'+(count!==1?'s':'');
+  event.stopPropagation();
+  document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  let count=0;
+  document.querySelectorAll('.ach-card').forEach((card,i)=>{
+    card.classList.remove('pop');
+    if(cat==='all' || card.dataset.cat===cat){
+      card.classList.remove('hide');
+      void card.offsetWidth;
+      card.classList.add('pop');
+      card.style.animationDelay=(i*0.05)+'s';
+      count++;
+    } else { card.classList.add('hide'); }
+  });
+  document.getElementById('achCount').innerText='Showing '+count+' achievement'+(count!==1?'s':'');
 }
 document.getElementById('education').addEventListener('click', function(e){
-  if(!e.target.closest('.ach-filter') && !e.target.closest('.ach-card')){
-    document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
-  }
+  if(!e.target.closest('.ach-filter') && !e.target.closest('.ach-card')){
+    document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
+  }
 });
 function openCert(src,title){ event.stopPropagation(); document.getElementById('certImg').src=src; document.getElementById('certImg').classList.remove('zoomed'); document.getElementById('certTitle').innerText=title; document.getElementById('certModal').classList.add('active'); }
 function openContact(){document.getElementById('contactModal').classList.add('active');}
