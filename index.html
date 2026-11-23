@@ -25,6 +25,26 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 #home{justify-content:center;align-items:center;gap:clamp(30px, 6vw, 80px);padding:clamp(20px, 4vw, 40px) clamp(16px, 6vw, 7%)}
 
+/* FULL-BODY FORMAL HOME PHOTO */
+.fullbody-frame{
+  width:clamp(240px, 26vw, 360px);
+  height:clamp(360px, 68vh, 580px);
+  border-radius:20px;
+  background:#111;
+  overflow:hidden;
+  border:2px solid var(--pink);
+  box-shadow:0 0 80px rgba(180,0,0,.3), 0 0 140px rgba(201,122,126,.3);
+  flex-shrink:0;
+  margin:auto 0;
+}
+.fullbody-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+}
+
 /* NO-SCROLL COMPACT PERSONAL INFORMATION SECTION */
 #about{
   flex-direction:row !important;
@@ -122,8 +142,6 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
   padding:10px 18px;
 }
 
-.circle{width:clamp(300px, 38vw, 560px);height:clamp(300px, 38vw, 560px);min-width:clamp(300px, 38vw, 560px);border-radius:50%;background:#fff;overflow:hidden;border:2px solid var(--pink);box-shadow:0 0 80px rgba(180,0,0,.35), 0 0 140px rgba(201,122,126,.35);flex-shrink:0;margin:auto 0}
-.circle img{width:100%;height:100%;object-fit:cover;object-position:top}
 .home-text{flex:1;max-width:640px}
 .home-text h1{font-size:clamp(48px, 6.5vw, 84px);font-weight:800;line-height:1.05;letter-spacing:-2px;white-space:nowrap}
 .home-text h1 span{color:var(--pink)}
@@ -231,7 +249,7 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 .about-left,.about-right{width:100%;max-width:100%;flex:none}.about-right{max-width:340px}
 .about-right img{max-height:none}
 .info-grid{grid-template-columns:1fr}
-.circle{width:280px;height:280px;min-width:280px}
+.fullbody-frame{width:230px;height:340px}
 .home-text h1{font-size:38px !important;white-space:normal}.home-text h2{font-size:19px !important}.home-text p{font-size:13.5px !important;margin:0 auto}
 #family{justify-content:flex-start;padding:16px 14px 70px}
 .p-wrap{grid-template-columns:1fr}
@@ -254,7 +272,7 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 <button class="side-arrow" id="prevSide" onclick="prevPage()"><i class="fas fa-chevron-left"></i></button>
 <button class="side-arrow" id="nextSide" onclick="nextPage()"><i class="fas fa-chevron-right"></i></button>
 <div class="viewport">
-<div id="home" class="page active"><div class="circle"><img src="profile.jpg" onerror="this.src='https://i.pravatar.cc/500?img=26'"></div><div class="home-text"><h1>Hi, it's <span>Hazel</span></h1><h2>I'm a BSIT Student</h2><p>I am <b>BOLD, driven, and eager to learn</b> - ready to contribute real solutions to your company.</p><button class="home-btn" onclick="openContact()"><i class="fas fa-paper-plane"></i> Hire me</button></div></div>
+<div id="home" class="page active"><div class="fullbody-frame"><img src="formal-home.jpg" onerror="this.src='profile.jpg'"></div><div class="home-text"><h1>Hi, it's <span>Hazel</span></h1><h2>I'm a BSIT Student</h2><p>I am <b>BOLD, driven, and eager to learn</b> - ready to contribute real solutions to your company.</p><button class="home-btn" onclick="openContact()"><i class="fas fa-paper-plane"></i> Hire me</button></div></div>
 
 <div id="about" class="page">
   <div class="about-left">
