@@ -23,132 +23,167 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .page{position:absolute;inset:0;width:100%;min-height:100%;display:none !important;padding:clamp(16px, 3vw, 32px) clamp(14px, 5vw, 6%);overflow-y:auto;background:#000}
 .page.active{display:flex !important;animation:fade .3s ease}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-#home{justify-content:center;align-items:center;gap:clamp(30px, 6vw, 80px);padding:clamp(20px, 4vw, 40px) clamp(16px, 6vw, 7%)}
+#home{justify-content:center;align-items:center;gap:clamp(30px, 5vw, 72px);padding:clamp(16px, 3vw, 32px) clamp(64px, 6vw, 84px)}
 
-/* FULL-BODY FORMAL HOME PHOTO */
+/* FULL-BODY FORMAL HOME PHOTO (HEAD TO SHOES, ZERO CROPPING) */
 .fullbody-frame{
-  width:clamp(240px, 26vw, 360px);
-  height:clamp(360px, 68vh, 580px);
-  border-radius:20px;
-  background:#111;
+  height:clamp(380px, 74vh, 640px);
+  width:auto;
+  max-width:min(380px, 34vw);
+  border-radius:18px;
+  background:#0a0a0a;
   overflow:hidden;
   border:2px solid var(--pink);
   box-shadow:0 0 80px rgba(180,0,0,.3), 0 0 140px rgba(201,122,126,.3);
   flex-shrink:0;
   margin:auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .fullbody-frame img{
   width:100%;
   height:100%;
-  object-fit:cover;
-  object-position:top center;
+  object-fit:contain;
   display:block;
 }
 
-/* NO-SCROLL COMPACT PERSONAL INFORMATION SECTION */
+/* NO-SCROLL PERSONAL INFORMATION LAYOUT (PHOTO ON RIGHT) */
 #about{
   flex-direction:row !important;
-  gap:22px !important;
+  gap:20px !important;
   align-items:center;
   justify-content:center;
-  padding:14px clamp(68px, 6vw, 88px);
+  padding:10px clamp(66px, 6vw, 86px);
   overflow:hidden;
   height:calc(100vh - clamp(60px, 8vh, 80px));
 }
-.about-left{
+.pif-sheet{
   flex:1;
   min-width:0;
-  max-width:960px;
+  max-width:1020px;
+  background:#0b0b0b;
+  border:1.5px solid var(--pink);
+  border-radius:14px;
+  padding:12px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  box-shadow:0 10px 30px rgba(201,122,126,.12);
+}
+.pif-header{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  border-bottom:1px solid #262626;
+  padding-bottom:6px;
+}
+.pif-header h2{
+  font-size:clamp(15px, 1.4vw, 18px);
+  letter-spacing:0.6px;
+  text-transform:uppercase;
+  color:#fff;
+}
+.pif-header h2 span{color:var(--pink)}
+.pif-sec-title{
+  font-family:'Poppins',sans-serif;
+  font-size:10.5px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.7px;
+  color:var(--pink);
+  background:#151515;
+  padding:3px 9px;
+  border-left:3px solid var(--pink);
+  border-radius:3px;
+}
+.pif-grid{
   display:grid;
-  grid-template-columns:1.05fr 1fr;
-  gap:12px 16px;
-  align-content:center;
+  grid-template-columns:repeat(4, 1fr);
+  gap:5px 8px;
 }
-#about .title{
-  grid-column:1 / -1;
-  font-size:clamp(20px, 2.2vw, 26px);
-  margin-bottom:0;
-}
-#about .card{
-  padding:12px 15px;
+.pif-field{
+  background:#121212;
+  border:1px solid #222;
+  border-radius:6px;
+  padding:4px 8px;
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
-#about .bio-card p{
-  font-size:clamp(11.5px, 1vw, 12.8px);
-  line-height:1.52;
-  color:#bbb;
+.pif-label{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:#888;
+  font-weight:600;
+  line-height:1.15;
 }
-#about .bio-card p + p{
-  margin-top:7px;
+.pif-val{
+  font-size:clamp(10.5px, 0.88vw, 11.6px);
+  color:#f2f2f2;
+  font-weight:500;
+  line-height:1.3;
+  margin-top:1px;
 }
-.info-card h3{
-  color:#c97a7e;
-  font-size:14px;
-  margin-bottom:8px;
-}
-.info-grid{
+.span-2{grid-column:span 2}
+.span-3{grid-column:span 3}
+.span-4{grid-column:1 / -1}
+.pif-skills-row{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:5px 10px;
-  font-size:clamp(11px, 0.95vw, 12.2px);
-  line-height:1.45;
-  color:#bbb;
+  grid-template-columns:1.35fr 0.85fr;
+  gap:8px;
 }
-.info-grid div b{color:#fff}
-.info-span{grid-column:1 / -1}
-.skills-box{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:10px 14px;
-  border-radius:12px;
+.pif-skills-box{
+  background:#121212;
+  border:1px solid #222;
+  border-radius:6px;
+  padding:5px 8px;
 }
-.skills-box h3{
-  font-size:13px;
-  margin-bottom:6px;
-}
-.skills-list{
+.pif-skills-list{
   display:flex;
   flex-wrap:wrap;
-  gap:5px;
+  gap:4px;
+  margin-top:4px;
 }
 #about .skill-tag{
-  padding:3px 9px;
-  font-size:10.5px;
+  padding:2px 7px;
+  font-size:9.8px;
   margin:0;
 }
+
+/* PROFILE PICTURE ON RIGHT SIDE */
 .about-right{
-  flex:0 0 245px;
-  width:245px;
-  max-width:245px;
+  flex:0 0 225px;
+  width:225px;
+  max-width:225px;
   display:flex;
   flex-direction:column;
   align-items:center;
 }
 .about-right img{
   width:100%;
-  max-height:54vh;
+  max-height:50vh;
   border-radius:14px;
-  border:1px solid #c97a7e;
+  border:1.5px solid #c97a7e;
   display:block;
   object-fit:cover;
   object-position:top;
 }
 .about-right .btn{
-  margin-top:12px;
+  margin-top:11px;
   width:100%;
   justify-content:center;
-  padding:10px 18px;
+  padding:9px 16px;
 }
 
 .home-text{flex:1;max-width:640px}
-.home-text h1{font-size:clamp(48px, 6.5vw, 84px);font-weight:800;line-height:1.05;letter-spacing:-2px;white-space:nowrap}
+.home-text h1{font-size:clamp(46px, 6vw, 80px);font-weight:800;line-height:1.05;letter-spacing:-2px;white-space:nowrap}
 .home-text h1 span{color:var(--pink)}
-.home-text h2{font-size:clamp(22px, 2.8vw, 36px);font-weight:700;margin:22px 0 18px}
-.home-text p{color:#aaa;font-size:clamp(15px, 1.6vw, 21px);line-height:1.65;max-width:560px}
+.home-text h2{font-size:clamp(22px, 2.6vw, 34px);font-weight:700;margin:20px 0 16px}
+.home-text p{color:#aaa;font-size:clamp(15px, 1.5vw, 20px);line-height:1.65;max-width:560px}
 .home-text p b{color:#fff}
-.home-btn{margin-top:30px;display:inline-flex;gap:10px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:clamp(12px, 1.2vw, 16px) clamp(28px, 3vw, 42px);border-radius:32px;font-size:clamp(14px, 1.4vw, 18px);font-weight:600;cursor:pointer;background:transparent}
+.home-btn{margin-top:28px;display:inline-flex;gap:10px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:clamp(12px, 1.2vw, 15px) clamp(28px, 3vw, 40px);border-radius:32px;font-size:clamp(14px, 1.4vw, 18px);font-weight:600;cursor:pointer;background:transparent}
 .home-btn:hover{background:var(--pink);color:#000}
 .title{font-size:clamp(22px, 2.8vw, 30px);margin-bottom:12px;font-weight:700}
 .title span{color:var(--pink)}
@@ -180,39 +215,173 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .btn{margin-top:18px;display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:clamp(10px, 1vw, 12px) clamp(20px, 2.5vw, 28px);border-radius:28px;font-size:clamp(12px, 1.2vw, 13.5px);font-weight:600;cursor:pointer;background:transparent}
 .btn:hover{background:var(--pink);color:#000}
 
-/* NO-SCROLL COMPACT ACHIEVEMENTS SECTION */
+/* NO-SCROLL ACHIEVEMENTS + LEFT EDUCATION TIMELINE */
 #education{
-  flex-direction:column;
+  flex-direction:row !important;
   align-items:center;
   justify-content:center;
-  padding:12px clamp(64px, 6vw, 84px);
+  gap:18px;
+  padding:14px clamp(64px, 6vw, 84px);
   overflow:hidden;
   height:calc(100vh - clamp(60px, 8vh, 80px));
+}
+.edu-rail{
+  flex:0 0 335px;
+  width:335px;
+  height:100%;
+  max-height:540px;
+  background:#0d0d0d;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px 16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-self:center;
+}
+.edu-rail-title{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(20px, 2.2vw, 26px);
+  font-weight:700;
+  color:#fff;
+  margin-bottom:14px;
+  line-height:1.25;
+  text-align:center;
+  flex-shrink:0;
+}
+.edu-rail-title span{color:var(--pink)}
+.edu-timeline{
+  position:relative;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:12px;
+  padding:6px 0 6px 24px;
+}
+.edu-timeline::before{
+  content:'';
+  position:absolute;
+  left:24px;
+  top:30px;
+  bottom:30px;
+  width:2.5px;
+  background:linear-gradient(to top, var(--pink), rgba(201,122,126,.4));
+}
+.edu-step{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  z-index:1;
+}
+.edu-logo-circle{
+  width:52px;
+  height:52px;
+  min-width:52px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid var(--pink);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px;
+  box-shadow:0 0 14px rgba(201,122,126,.24);
+}
+.edu-logo-circle img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:50%;
+  display:block;
+}
+.edu-meta{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.edu-year{
+  font-size:11px;
+  font-weight:700;
+  color:var(--pink);
+  letter-spacing:0.3px;
+  line-height:1.25;
+}
+.edu-school{
+  font-size:12px;
+  font-weight:700;
+  color:#fff;
+  line-height:1.28;
+  margin-top:2px;
+}
+.edu-stage{
+  font-size:11px;
+  color:#c4c4c4;
+  line-height:1.25;
+  margin-top:2px;
+}
+.edu-loc{
+  font-size:10.5px;
+  color:#999;
+  line-height:1.25;
+  margin-top:2px;
+}
+
+.ach-main{
+  flex:1;
+  min-width:0;
+  height:100%;
+  max-height:540px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
 }
 #education .title{
   font-size:clamp(20px, 2.2vw, 26px);
   margin-bottom:8px;
+  flex-shrink:0;
 }
-.ach-filter-wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%;margin:0 0 12px}
-.ach-filter{background:#b8b8b8;color:#fff;border:none;padding:7px 14px;border-radius:6px;font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:500;cursor:pointer;min-width:120px;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.ach-filter-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+  align-items:center;
+  min-height:36px;
+  width:100%;
+  margin:0 0 12px;
+  flex-shrink:0;
+}
+.ach-filter{background:#b8b8b8;color:#fff;border:none;height:34px;padding:0 13px;border-radius:6px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;cursor:pointer;min-width:112px;transition:background-color .2s,color .2s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .ach-filter:hover{background:#d1d1d1}
 .ach-filter.active{background:#fff;color:#000;font-weight:600}
 .ach-filter .num{display:none;background:var(--pink);color:#000;font-size:10px;font-weight:700;min-width:19px;height:19px;border-radius:50%;align-items:center;justify-content:center;padding:0 4px}
-.ach-filter.active .num{display:inline-flex;animation:fade .2s ease}
-.ach-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;width:100%;max-width:1160px;margin:0 auto}
-.ach-card{background:#fff;border-radius:6px;overflow:hidden;cursor:pointer;transition:.25s;position:relative;text-align:left;border:1px solid #222;display:flex;flex-direction:column}
-.ach-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(201,122,126,.35);border-color:var(--pink)}
+.ach-filter.active .num{display:inline-flex}
+.ach-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:max-content;
+  align-content:start;
+  gap:11px;
+  width:100%;
+  max-width:1020px;
+  margin:0 auto;
+}
+.ach-card{background:#fff;border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;text-align:left;border:1px solid #222;display:flex;flex-direction:column}
+.ach-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,122,126,.35);border-color:var(--pink)}
 .ach-card.hide{display:none}
-.ach-card.pop{animation:pop .35s ease}
-@keyframes pop{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.ach-thumb{width:100%;aspect-ratio:16/10;max-height:145px;background:#fff;display:flex;align-items:center;justify-content:center;padding:8px}
+.ach-card.pop{animation:pop .25s ease}
+@keyframes pop{from{opacity:.4}to{opacity:1}}
+.ach-thumb{width:100%;aspect-ratio:16/10;max-height:132px;background:#fff;display:flex;align-items:center;justify-content:center;padding:7px}
 .ach-thumb img{width:100%;height:100%;object-fit:contain}
-.ach-info{padding:8px 10px 10px;background:#0d0d0d;flex:1;display:flex;flex-direction:column;justify-content:center}
-.ach-info h3{font-size:12.5px;font-weight:700;color:#fff;line-height:1.25;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-.ach-info p{font-size:11px;color:#999;margin-top:3px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.ach-info{padding:7px 9px 9px;background:#0d0d0d;flex:1;display:flex;flex-direction:column;justify-content:center}
+.ach-info h3{font-size:12px;font-weight:700;color:#fff;line-height:1.25;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.ach-info p{font-size:10.5px;color:#999;margin-top:2px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .ach-view{position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;color:#fff;font-weight:600;font-size:12px}
 .ach-card:hover .ach-view{opacity:1}
-.ach-count{color:#777;font-size:11.5px;text-align:center;margin-top:10px}
+.ach-count{color:#777;font-size:11px;text-align:center;margin-top:8px;flex-shrink:0}
 
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:10000;align-items:center;justify-content:center;padding:20px}
 .modal.active{display:flex}
@@ -235,29 +404,34 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 }
 @media (max-width:1040px){
   #about{height:auto;overflow-y:auto;align-items:flex-start;padding:20px 64px}
-  .about-left{grid-template-columns:1fr}
-  .about-right{flex:0 0 220px;width:220px}
-}
-@media (max-width:980px){
-  #education{height:auto;overflow-y:auto;justify-content:flex-start;padding:18px 54px}
+  .pif-grid{grid-template-columns:repeat(2, 1fr)}
+  .pif-skills-row{grid-template-columns:1fr}
+  .about-right{flex:0 0 205px;width:205px}
+  #education{height:calc(100vh - clamp(60px, 8vh, 80px));overflow:hidden;flex-direction:row !important;align-items:center;padding:12px 54px;gap:14px}
+  .edu-rail{flex:0 0 275px;width:275px;max-width:none;align-self:center}
+  .ach-main{height:100%;max-height:540px}
   .ach-grid{grid-template-columns:repeat(3, 1fr)}
 }
 @media (max-width:768px){
 nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 .page{padding:16px 14px 70px;flex-direction:column !important;gap:18px;align-items:center;text-align:center}
 #about{height:auto;overflow-y:auto;flex-direction:column !important;align-items:center;padding:16px 14px 70px}
-.about-left,.about-right{width:100%;max-width:100%;flex:none}.about-right{max-width:340px}
+.pif-sheet,.about-right{width:100%;max-width:100%;flex:none}.about-right{max-width:340px}
 .about-right img{max-height:none}
-.info-grid{grid-template-columns:1fr}
-.fullbody-frame{width:230px;height:340px}
+.pif-grid{grid-template-columns:1fr}
+.span-2,.span-3,.span-4{grid-column:1 / -1}
+.fullbody-frame{height:380px;max-width:85vw}
 .home-text h1{font-size:38px !important;white-space:normal}.home-text h2{font-size:19px !important}.home-text p{font-size:13.5px !important;margin:0 auto}
 #family{justify-content:flex-start;padding:16px 14px 70px}
 .p-wrap{grid-template-columns:1fr}
 .p-photo-wrap{height:210px}
-#education{height:auto;overflow-y:auto;justify-content:flex-start;padding:16px 14px 70px}
+#education{height:auto;overflow-y:auto;flex-direction:column !important;justify-content:flex-start;padding:16px 14px 70px}
+.edu-rail{width:100%;height:auto;max-height:none;flex:none}
+.edu-timeline{gap:14px}
+.ach-main{height:auto;max-height:none}
 .ach-grid{grid-template-columns:repeat(2, 1fr);gap:10px}
 .ach-thumb{aspect-ratio:4/3;max-height:none}
-.ach-filter{min-width:0;flex:1;padding:9px 8px;font-size:12px}
+.ach-filter{min-width:0;flex:1;padding:0 8px;font-size:12px}
 #about,#education,#family{text-align:left}
 .side-arrow{top:auto !important;bottom:14px;transform:none !important;width:42px;height:42px}
 #prevSide{left:14px}#nextSide{right:14px}
@@ -275,56 +449,141 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 <div id="home" class="page active"><div class="fullbody-frame"><img src="formal-home.jpg" onerror="this.src='profile.jpg'"></div><div class="home-text"><h1>Hi, it's <span>Hazel</span></h1><h2>I'm a BSIT Student</h2><p>I am <b>BOLD, driven, and eager to learn</b> - ready to contribute real solutions to your company.</p><button class="home-btn" onclick="openContact()"><i class="fas fa-paper-plane"></i> Hire me</button></div></div>
 
 <div id="about" class="page">
-  <div class="about-left">
-    <h2 class="title">About <span>Me</span></h2>
-    <div class="card bio-card">
-      <p>I'm Hazel Mae Pacasi Nabus, a 1st Year BSIT student at the University of the Cordilleras in Baguio City.</p>
-      <p>I'm building my foundation in Python and Java, with an interest in ERP and web technologies. I have real office experience from SPES 2023 and 2026 under DOLE, where I handled data encoding, filing, and document preparation. I'm also a DOST-SEI scholar with leadership training.</p>
-      <p>I am organized, patient, and persistent - I can help with accurate encoding, filing, and making clear documents and presentations. I'm looking for an internship or entry-level opportunity where I can contribute, learn fast, and grow as an IT professional.</p>
+  <div class="pif-sheet">
+    <div class="pif-header">
+      <h2>Personal <span>Information</span></h2>
     </div>
-    <div class="card info-card">
-      <h3>Personal Information</h3>
-      <div class="info-grid">
-        <div class="info-span"><b>Full Name:</b> Nabus, Hazel Mae Pacasi</div>
-        <div><b>Age:</b> 19 years old</div>
-        <div><b>Sex:</b> Female</div>
-        <div class="info-span"><b>Date of Birth:</b> October 10, 2007</div>
-        <div><b>Civil Status:</b> Single</div>
-        <div><b>Citizenship:</b> Filipino</div>
-        <div><b>Height:</b> 159 cm</div>
-        <div><b>Weight:</b> 48 kg</div>
-        <div class="info-span"><b>Religion:</b> Roman Catholic</div>
-        <div class="info-span"><b>Address:</b> Pico, La Trinidad, Benguet</div>
-        <div class="info-span"><b>Email:</b> hazelnabus7@gmail.com</div>
-        <div class="info-span"><b>Languages:</b> English, Tagalog, Ilokano</div>
+
+    <div class="pif-sec-title">I. Personal &amp; Contact Details</div>
+    <div class="pif-grid">
+      <div class="pif-field span-2">
+        <span class="pif-label">Full Name (Last, First, Middle)</span>
+        <span class="pif-val">Nabus, Hazel Mae Pacasi</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Date of Birth</span>
+        <span class="pif-val">October 10, 2007</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Age / Sex</span>
+        <span class="pif-val">19 yrs old / Female</span>
+      </div>
+
+      <div class="pif-field span-2">
+        <span class="pif-label">Place of Birth</span>
+        <span class="pif-val">Baguio City, Benguet</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Marital Status</span>
+        <span class="pif-val">Single</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Citizenship</span>
+        <span class="pif-val">Filipino</span>
+      </div>
+
+      <div class="pif-field">
+        <span class="pif-label">Ethnicity</span>
+        <span class="pif-val">Ibaloi</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Religion</span>
+        <span class="pif-val">Roman Catholic</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Blood Type</span>
+        <span class="pif-val">O-</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Height / Weight</span>
+        <span class="pif-val">159 cm / 48 kg</span>
+      </div>
+
+      <div class="pif-field span-2">
+        <span class="pif-label">Residential Address</span>
+        <span class="pif-val">Pico, La Trinidad, Benguet 2601, Philippines</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Mobile Number</span>
+        <span class="pif-val">09182583277</span>
+      </div>
+      <div class="p-field pif-field">
+        <span class="pif-label">Emergency Contact</span>
+        <span class="pif-val">09700789467</span>
+      </div>
+
+      <div class="pif-field span-2">
+        <span class="pif-label">Email Address</span>
+        <span class="pif-val">hazelnabus7@gmail.com</span>
+      </div>
+      <div class="pif-field span-2">
+        <span class="pif-label">Languages Spoken</span>
+        <span class="pif-val">English, Tagalog, Ilokano</span>
       </div>
     </div>
-    <div class="skills-box">
-      <h3>Hard <span style="color:#c97a7e">Skills</span></h3>
-      <div class="skills-list">
-        <span class="skill-tag">Python (Learning)</span>
-        <span class="skill-tag">Java (Learning)</span>
-        <span class="skill-tag">HTML (Aspiring)</span>
-        <span class="skill-tag">CSS (Aspiring)</span>
-        <span class="skill-tag">MS Word</span>
-        <span class="skill-tag">MS Excel</span>
-        <span class="skill-tag">Canva</span>
-        <span class="skill-tag">Data Encoding</span>
-        <span class="skill-tag">Filing</span>
-        <span class="skill-tag">ERP Basics - 2nd Year Goal</span>
+
+    <div class="pif-sec-title">II. Academic Profile &amp; Career Objective</div>
+    <div class="pif-grid">
+      <div class="pif-field span-2">
+        <span class="pif-label">School / University</span>
+        <span class="pif-val">University of the Cordilleras (UC)</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Student ID Number</span>
+        <span class="pif-val">25-4165-537</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Program &amp; Year Level</span>
+        <span class="pif-val">BSIT - 1st Year</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Scholarship</span>
+        <span class="pif-val">DOST-SEI Scholar</span>
+      </div>
+      <div class="pif-field">
+        <span class="pif-label">Work Experience</span>
+        <span class="pif-val">DOLE SPES Clerk (2023 &amp; 2026)</span>
+      </div>
+      <div class="pif-field span-2">
+        <span class="pif-label">Hobbies &amp; Interests</span>
+        <span class="pif-val">Running, Playing Board/Card Games, Organizing</span>
+      </div>
+      <div class="pif-field span-4">
+        <span class="pif-label">Career Objective</span>
+        <span class="pif-val">To secure an IT internship or entry-level administrative and technical support role where I can apply my hands-on DOLE SPES experience in accurate data encoding, filing, and document preparation while continuing to grow my skills in Python, Java, ERP, and web development.</span>
       </div>
     </div>
-    <div class="skills-box">
-      <h3>Soft <span style="color:#c97a7e">Skills</span></h3>
-      <div class="skills-list">
-        <span class="skill-tag">Communication - Deepening</span>
-        <span class="skill-tag">Teamwork</span>
-        <span class="skill-tag">Patience</span>
-        <span class="skill-tag">Problem Solving</span>
-        <span class="skill-tag">Persistence</span>
+
+    <div class="pif-sec-title">III. Skills &amp; Competencies</div>
+    <div class="pif-skills-row">
+      <div class="pif-skills-box">
+        <span class="pif-label">Hard Skills</span>
+        <div class="pif-skills-list">
+          <span class="skill-tag">Python (Learning)</span>
+          <span class="skill-tag">Java (Learning)</span>
+          <span class="skill-tag">HTML (Aspiring)</span>
+          <span class="skill-tag">CSS (Aspiring)</span>
+          <span class="skill-tag">MS Word</span>
+          <span class="skill-tag">MS Excel</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">Data Encoding</span>
+          <span class="skill-tag">Filing</span>
+          <span class="skill-tag">ERP Basics - 2nd Year Goal</span>
+        </div>
+      </div>
+      <div class="pif-skills-box">
+        <span class="pif-label">Soft Skills</span>
+        <div class="pif-skills-list">
+          <span class="skill-tag">Communication - Deepening</span>
+          <span class="skill-tag">Teamwork</span>
+          <span class="skill-tag">Patience</span>
+          <span class="skill-tag">Problem Solving</span>
+          <span class="skill-tag">Persistence</span>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="about-right">
     <img src="profile.jpg" onerror="this.style.display='none'">
     <button class="btn" onclick="openContact()"><i class="fas fa-envelope"></i> Contact Me</button>
@@ -332,29 +591,64 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 </div>
 
 <div id="education" class="page">
-<h2 class="title" style="text-align:center">My <span>Achievements</span></h2>
-<div class="ach-filter-wrap">
-<button class="ach-filter" onclick="filterAch('all',this)">All <span class="num">7</span></button>
-<button class="ach-filter" onclick="filterAch('academic',this)">Academic <span class="num">4</span></button>
-<button class="ach-filter" onclick="filterAch('training',this)">Training <span class="num">1</span></button>
-<button class="ach-filter" onclick="filterAch('work',this)">Work <span class="num">2</span></button>
-</div>
-<div class="ach-grid" id="achGrid">
-<div class="ach-card" data-cat="academic" onclick="openCert('cert-jhs.jpeg','Junior High School Certificate - BSU Secondary Laboratory School • 2023')"><div class="ach-thumb"><img src="cert-jhs.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Junior+High+Certificate'"></div><div class="ach-info"><h3>Junior High School Certificate</h3><p>BSU - SLS • Agricultural Science • 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="academic" onclick="openCert('cert-shs-diploma.jpeg','Senior High School Diploma - STEM Strand • BSU Secondary Laboratory School • 2025')"><div class="ach-thumb"><img src="cert-shs-diploma.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Senior+High+Diploma+STEM'"></div><div class="ach-info"><h3>Senior High School Diploma</h3><p>BSU - SLS • STEM Strand • 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-23-24.jpeg','Certificate of Recognition - Leadership • SY 2023-2024 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-23-24.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2023-2024'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2023 - 2024</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-24-25.jpeg','Certificate of Recognition - Leadership • SY 2024-2025 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-24-25.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2024-2025'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2024 - 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="training" onclick="openCert('cert-dost.jpeg','DOST-SEI Scholars Leadership Camp - Certificate of Participation • Sept 16-20, 2026 • ION Hotel, Baguio City')"><div class="ach-thumb"><img src="cert-dost.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=DOST-SEI+Camp'"></div><div class="ach-info"><h3>DOST-SEI Scholars Leadership Camp</h3><p>Certificate of Participation • Sept 16-20, 2026</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="work" onclick="openCert('cert-spes-23.jpeg','Certification - SPES Clerk • 25 Days • LGU La Trinidad • June - July 2023 • Issued Sept 23, 2023')"><div class="ach-thumb"><img src="cert-spes-23.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2023+Certification'"></div><div class="ach-info"><h3>Certification - SPES Clerk</h3><p>LGU La Trinidad • 25 Days • June - July 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
-<div class="ach-card" data-cat="work" onclick="openCert('https://via.placeholder.com/600x400/ffffff/c97a7e?text=SPES+2026+-+Certificate+to+be+issued+Dec+17,+2026','SPES 2026 - Clerk • Certificate to be issued on Dec 17, 2026')"><div class="ach-thumb"><img src="cert-spes-26.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2026+-+Dec+17,+2026'"></div><div class="ach-info"><h3>SPES 2026 - Clerk</h3><p>DOLE / LGU La Trinidad • Issued Dec 17, 2026</p></div><div class="ach-view">👁 View Details</div></div>
-</div>
-<p class="ach-count" id="achCount">Showing 7 achievements</p>
+  <aside class="edu-rail">
+    <h2 class="edu-rail-title"><span>Education</span></h2>
+    <div class="edu-timeline">
+      <div class="edu-step">
+        <div class="edu-logo-circle"><img src="logo-uc.jpg" onerror="this.src='https://via.placeholder.com/90/ffffff/c97a7e?text=UC'"></div>
+        <div class="edu-meta">
+          <span class="edu-year">2025 – Present</span>
+          <span class="edu-school">University of the Cordilleras</span>
+          <span class="edu-stage">College • BSIT</span>
+          <span class="edu-loc">Governor Pack Rd., Baguio City, Benguet</span>
+        </div>
+      </div>
+      <div class="edu-step">
+        <div class="edu-logo-circle"><img src="logo-bsu-sls.jpg" onerror="this.src='https://via.placeholder.com/90/ffffff/c97a7e?text=BSU'"></div>
+        <div class="edu-meta">
+          <span class="edu-year">2019 – 2025</span>
+          <span class="edu-school">Benguet State University - Secondary Laboratory School</span>
+          <span class="edu-stage">Junior High &amp; Senior High STEM</span>
+          <span class="edu-loc">Km. 5, La Trinidad, Benguet</span>
+        </div>
+      </div>
+      <div class="edu-step">
+        <div class="edu-logo-circle"><img src="logo-ltcs.jpg" onerror="this.src='https://via.placeholder.com/90/ffffff/c97a7e?text=LTCS'"></div>
+        <div class="edu-meta">
+          <span class="edu-year">2013 – 2019</span>
+          <span class="edu-school">La Trinidad Central School</span>
+          <span class="edu-stage">Elementary</span>
+          <span class="edu-loc">Poblacion, La Trinidad, Benguet</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ach-main">
+    <h2 class="title" style="text-align:center">My <span>Achievements</span></h2>
+    <div class="ach-filter-wrap">
+      <button class="ach-filter" onclick="filterAch('all',this)">All <span class="num">7</span></button>
+      <button class="ach-filter" onclick="filterAch('academic',this)">Academic <span class="num">4</span></button>
+      <button class="ach-filter" onclick="filterAch('training',this)">Training <span class="num">1</span></button>
+      <button class="ach-filter" onclick="filterAch('work',this)">Work <span class="num">2</span></button>
+    </div>
+    <div class="ach-grid" id="achGrid">
+      <div class="ach-card" data-cat="academic" onclick="openCert('cert-jhs.jpeg','Junior High School Certificate - BSU Secondary Laboratory School • 2023')"><div class="ach-thumb"><img src="cert-jhs.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Junior+High+Certificate'"></div><div class="ach-info"><h3>Junior High School Certificate</h3><p>BSU - SLS • Agricultural Science • 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="academic" onclick="openCert('cert-shs-diploma.jpeg','Senior High School Diploma - STEM Strand • BSU Secondary Laboratory School • 2025')"><div class="ach-thumb"><img src="cert-shs-diploma.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Senior+High+Diploma+STEM'"></div><div class="ach-info"><h3>Senior High School Diploma</h3><p>BSU - SLS • STEM Strand • 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-23-24.jpeg','Certificate of Recognition - Leadership • SY 2023-2024 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-23-24.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2023-2024'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2023 - 2024</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-24-25.jpeg','Certificate of Recognition - Leadership • SY 2024-2025 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-24-25.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2024-2025'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2024 - 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="training" onclick="openCert('cert-dost.jpeg','DOST-SEI Scholars Leadership Camp - Certificate of Participation • Sept 16-20, 2026 • ION Hotel, Baguio City')"><div class="ach-thumb"><img src="cert-dost.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=DOST-SEI+Camp'"></div><div class="ach-info"><h3>DOST-SEI Scholars Leadership Camp</h3><p>Certificate of Participation • Sept 16-20, 2026</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="work" onclick="openCert('cert-spes-23.jpeg','Certification - SPES Clerk • 25 Days • LGU La Trinidad • June - July 2023 • Issued Sept 23, 2023')"><div class="ach-thumb"><img src="cert-spes-23.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2023+Certification'"></div><div class="ach-info"><h3>Certification - SPES Clerk</h3><p>LGU La Trinidad • 25 Days • June - July 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="work" onclick="openCert('cert-spes-26.jpeg','SPES 2026 - Clerk • Certificate to be issued on Dec 17, 2026')"><div class="ach-thumb"><img src="cert-spes-26.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2026+-+Dec+17,+2026'"></div><div class="ach-info"><h3>SPES 2026 - Clerk</h3><p>DOLE / LGU La Trinidad • Issued Dec 17, 2026</p></div><div class="ach-view">👁 View Details</div></div>
+    </div>
+    <p class="ach-count" id="achCount">Showing 7 achievements</p>
+  </div>
 </div>
 
 <div id="family" class="page">
   <h2 class="title">Family & <span>Friends</span></h2>
   <div class="p-wrap">
-    <div class="p-card" onclick="openCert('mom.jpg','My Mom')">
+    <div class="p-card" onclick="openCert('mom.jpg','Cristina P. Nabus')">
       <div class="p-photo-wrap">
         <img src="mom.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Mom'">
         <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
@@ -362,7 +656,7 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
       <h3>My Mom</h3>
       <p style="color:#bbb">She made sure we had just as much as any kid could ask for, even with the little she had. Beyond being our mama, she is a good and beautiful soul who has given us nothing but unconditional love and happiness.</p>
     </div>
-    <div class="p-card" onclick="openCert('dad.jpg','My Dad — In Loving Memory')">
+    <div class="p-card" onclick="openCert('dad.jpg','Robert M. Nabus')">
       <div class="p-photo-wrap">
         <img src="dad.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Dad'">
         <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
@@ -391,7 +685,7 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 </div>
 </div>
 <div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src="" onclick="this.classList.toggle('zoomed')"><h3 id="certTitle"></h3><p class="cert-hint">Tap the photo or certificate to zoom in / out</p></div></div>
-<div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:13px;text-align:left"><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> Pico, La Trinidad, Benguet 2601, Philippines</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
+<div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:13px;text-align:left"><i class="fas fa-phone" style="color:#c97a7e"></i> 09182583277<br><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> Pico, La Trinidad, Benguet 2601, Philippines</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
 <script>
 const pages=['home','about','education','family'];
 let currentPage='home';
@@ -425,7 +719,7 @@ function filterAch(cat,btn){
       card.classList.remove('hide');
       void card.offsetWidth;
       card.classList.add('pop');
-      card.style.animationDelay=(i*0.05)+'s';
+      card.style.animationDelay=(i*0.03)+'s';
       count++;
     } else { card.classList.add('hide'); }
   });
