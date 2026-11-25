@@ -48,27 +48,25 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
   display:block;
 }
 
-/* NO-SCROLL PERSONAL INFORMATION LAYOUT (PHOTO ON RIGHT) */
+/* NO-SCROLL PERSONAL INFORMATION LAYOUT (PHOTO TOP-RIGHT, DETAILS BELOW) */
 #about{
-  flex-direction:row !important;
-  gap:20px !important;
+  flex-direction:column !important;
   align-items:center;
   justify-content:center;
-  padding:10px clamp(66px, 6vw, 86px);
+  padding:8px clamp(66px, 6vw, 86px);
   overflow:hidden;
   height:calc(100vh - clamp(60px, 8vh, 80px));
 }
 .pif-sheet{
-  flex:1;
-  min-width:0;
-  max-width:1020px;
+  width:100%;
+  max-width:1040px;
   background:#0b0b0b;
   border:1.5px solid var(--pink);
   border-radius:14px;
-  padding:12px 16px;
+  padding:10px 15px;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:6px;
   box-shadow:0 10px 30px rgba(201,122,126,.12);
 }
 .pif-header{
@@ -76,54 +74,66 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
   justify-content:flex-start;
   align-items:center;
   border-bottom:1px solid #262626;
-  padding-bottom:6px;
+  padding-bottom:4px;
 }
 .pif-header h2{
-  font-size:clamp(15px, 1.4vw, 18px);
+  font-size:clamp(15px, 1.35vw, 17px);
   letter-spacing:0.6px;
   text-transform:uppercase;
   color:#fff;
 }
 .pif-header h2 span{color:var(--pink)}
+.pif-top-block{
+  display:grid;
+  grid-template-columns:1fr 132px;
+  gap:8px 12px;
+  align-items:start;
+}
+.pif-top-left{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  min-width:0;
+}
 .pif-sec-title{
   font-family:'Poppins',sans-serif;
-  font-size:10.5px;
+  font-size:10px;
   font-weight:700;
   text-transform:uppercase;
-  letter-spacing:0.7px;
+  letter-spacing:0.65px;
   color:var(--pink);
   background:#151515;
-  padding:3px 9px;
+  padding:2.5px 8px;
   border-left:3px solid var(--pink);
   border-radius:3px;
 }
 .pif-grid{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
-  gap:5px 8px;
+  gap:4px 7px;
 }
 .pif-field{
   background:#121212;
   border:1px solid #222;
   border-radius:6px;
-  padding:4px 8px;
+  padding:3.5px 7px;
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 .pif-label{
-  font-size:9px;
+  font-size:8.5px;
   text-transform:uppercase;
-  letter-spacing:0.5px;
+  letter-spacing:0.45px;
   color:#888;
   font-weight:600;
-  line-height:1.15;
+  line-height:1.1;
 }
 .pif-val{
-  font-size:clamp(10.5px, 0.88vw, 11.6px);
+  font-size:clamp(10px, 0.85vw, 11.2px);
   color:#f2f2f2;
   font-weight:500;
-  line-height:1.3;
+  line-height:1.25;
   margin-top:1px;
 }
 .span-2{grid-column:span 2}
@@ -132,49 +142,45 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 .pif-skills-row{
   display:grid;
   grid-template-columns:1.35fr 0.85fr;
-  gap:8px;
+  gap:7px;
 }
 .pif-skills-box{
   background:#121212;
   border:1px solid #222;
   border-radius:6px;
-  padding:5px 8px;
+  padding:4.5px 8px;
 }
 .pif-skills-list{
   display:flex;
   flex-wrap:wrap;
   gap:4px;
-  margin-top:4px;
+  margin-top:3px;
 }
 #about .skill-tag{
   padding:2px 7px;
-  font-size:9.8px;
+  font-size:9.5px;
   margin:0;
 }
 
-/* PROFILE PICTURE ON RIGHT SIDE */
+/* PROFILE PICTURE ON TOP-RIGHT */
 .about-right{
-  flex:0 0 225px;
-  width:225px;
-  max-width:225px;
+  width:132px;
   display:flex;
   flex-direction:column;
   align-items:center;
+  align-self:stretch;
+  justify-content:flex-start;
+  padding-top:22px;
 }
 .about-right img{
-  width:100%;
-  max-height:50vh;
-  border-radius:14px;
+  width:132px;
+  height:164px;
+  border-radius:10px;
   border:1.5px solid #c97a7e;
   display:block;
   object-fit:cover;
   object-position:top;
-}
-.about-right .btn{
-  margin-top:11px;
-  width:100%;
-  justify-content:center;
-  padding:9px 16px;
+  background:#121212;
 }
 
 .home-text{flex:1;max-width:640px}
@@ -404,9 +410,11 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 }
 @media (max-width:1040px){
   #about{height:auto;overflow-y:auto;align-items:flex-start;padding:20px 64px}
+  .pif-top-block{grid-template-columns:1fr 124px}
   .pif-grid{grid-template-columns:repeat(2, 1fr)}
   .pif-skills-row{grid-template-columns:1fr}
-  .about-right{flex:0 0 205px;width:205px}
+  .about-right{width:124px;padding-top:0}
+  .about-right img{width:124px;height:152px}
   #education{height:calc(100vh - clamp(60px, 8vh, 80px));overflow:hidden;flex-direction:row !important;align-items:center;padding:12px 54px;gap:14px}
   .edu-rail{flex:0 0 275px;width:275px;max-width:none;align-self:center}
   .ach-main{height:100%;max-height:540px}
@@ -416,8 +424,10 @@ nav{position:fixed;top:0;left:0;width:100%;height:clamp(60px, 8vh, 80px);padding
 nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 .page{padding:16px 14px 70px;flex-direction:column !important;gap:18px;align-items:center;text-align:center}
 #about{height:auto;overflow-y:auto;flex-direction:column !important;align-items:center;padding:16px 14px 70px}
-.pif-sheet,.about-right{width:100%;max-width:100%;flex:none}.about-right{max-width:340px}
-.about-right img{max-height:none}
+.pif-sheet{width:100%;max-width:100%}
+.pif-top-block{grid-template-columns:1fr}
+.about-right{width:150px;align-self:center;padding-top:0;order:-1}
+.about-right img{width:150px;height:185px}
 .pif-grid{grid-template-columns:1fr}
 .span-2,.span-3,.span-4{grid-column:1 / -1}
 .fullbody-frame{height:380px;max-width:85vw}
@@ -454,71 +464,79 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
       <h2>Personal <span>Information</span></h2>
     </div>
 
-    <div class="pif-sec-title">I. Personal &amp; Contact Details</div>
-    <div class="pif-grid">
-      <div class="pif-field span-2">
-        <span class="pif-label">Full Name (Last, First, Middle)</span>
-        <span class="pif-val">Nabus, Hazel Mae Pacasi</span>
-      </div>
-      <div class="pif-field">
-        <span class="pif-label">Date of Birth</span>
-        <span class="pif-val">October 10, 2007</span>
-      </div>
-      <div class="pif-field">
-        <span class="pif-label">Age / Sex</span>
-        <span class="pif-val">19 yrs old / Female</span>
+    <div class="pif-top-block">
+      <div class="pif-top-left">
+        <div class="pif-sec-title">I. Personal &amp; Contact Details</div>
+        <div class="pif-grid">
+          <div class="pif-field span-2">
+            <span class="pif-label">Full Name (Last, First, Middle)</span>
+            <span class="pif-val">Nabus, Hazel Mae Pacasi</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Date of Birth</span>
+            <span class="pif-val">October 10, 2007</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Age / Sex</span>
+            <span class="pif-val">19 yrs old / Female</span>
+          </div>
+
+          <div class="pif-field span-2">
+            <span class="pif-label">Place of Birth</span>
+            <span class="pif-val">Baguio City, Benguet</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Marital Status</span>
+            <span class="pif-val">Single</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Citizenship</span>
+            <span class="pif-val">Filipino</span>
+          </div>
+
+          <div class="pif-field">
+            <span class="pif-label">Ethnicity</span>
+            <span class="pif-val">Ibaloi</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Religion</span>
+            <span class="pif-val">Roman Catholic</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Blood Type</span>
+            <span class="pif-val">O-</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Height / Weight</span>
+            <span class="pif-val">159 cm / 48 kg</span>
+          </div>
+
+          <div class="pif-field span-2">
+            <span class="pif-label">Residential Address</span>
+            <span class="pif-val">Pico, La Trinidad, Benguet 2601, Philippines</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Mobile Number</span>
+            <span class="pif-val">09182583277</span>
+          </div>
+          <div class="pif-field">
+            <span class="pif-label">Emergency Contact</span>
+            <span class="pif-val">09700789467</span>
+          </div>
+
+          <div class="pif-field span-2">
+            <span class="pif-label">Email Address</span>
+            <span class="pif-val">hazelnabus7@gmail.com</span>
+          </div>
+          <div class="pif-field span-2">
+            <span class="pif-label">Languages Spoken</span>
+            <span class="pif-val">English, Tagalog, Ilokano</span>
+          </div>
+        </div>
       </div>
 
-      <div class="pif-field span-2">
-        <span class="pif-label">Place of Birth</span>
-        <span class="pif-val">Baguio City, Benguet</span>
-      </div>
-      <div class="pif-field">
-        <span class="pif-label">Marital Status</span>
-        <span class="pif-val">Single</span>
-      </div>
-      <div class="pif-field">
-        <span class="pif-label">Citizenship</span>
-        <span class="pif-val">Filipino</span>
-      </div>
-
-      <div class="pif-field">
-        <span class="pif-label">Ethnicity</span>
-        <span class="pif-val">Ibaloi</span>
-      </div>
-      <div class="pif-field">
-        <span class="pif-label">Religion</span>
-        <span class="pif-val">Roman Catholic</span>
-      </div>
-      <div class="pif-field">
-        <span class="pif-label">Blood Type</span>
-        <span class="pif-val">O-</span>
-      </div>
-      <div class="pif-field">
-        <span class="pif-label">Height / Weight</span>
-        <span class="pif-val">159 cm / 48 kg</span>
-      </div>
-
-      <div class="pif-field span-2">
-        <span class="pif-label">Residential Address</span>
-        <span class="pif-val">Pico, La Trinidad, Benguet 2601, Philippines</span>
-      </div>
-      <div class="pif-field">
-        <span class="pif-label">Mobile Number</span>
-        <span class="pif-val">09182583277</span>
-      </div>
-      <div class="p-field pif-field">
-        <span class="pif-label">Emergency Contact</span>
-        <span class="pif-val">09700789467</span>
-      </div>
-
-      <div class="pif-field span-2">
-        <span class="pif-label">Email Address</span>
-        <span class="pif-val">hazelnabus7@gmail.com</span>
-      </div>
-      <div class="pif-field span-2">
-        <span class="pif-label">Languages Spoken</span>
-        <span class="pif-val">English, Tagalog, Ilokano</span>
+      <div class="about-right">
+        <img src="profile.jpg" onerror="this.style.display='none'">
       </div>
     </div>
 
@@ -582,11 +600,6 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="about-right">
-    <img src="profile.jpg" onerror="this.style.display='none'">
-    <button class="btn" onclick="openContact()"><i class="fas fa-envelope"></i> Contact Me</button>
   </div>
 </div>
 
