@@ -14,17 +14,28 @@ h1,h2,h3,h4,.logo,.links a,.btn,.title{font-family:'Poppins',sans-serif}
 html,body{width:100%;height:100vh;height:100dvh;background:#000;color:#fff;overflow:hidden}
 :root{--pink:#c97a7e;--card:#111;--border:#222;--nav-h:clamp(58px, 7.5vh, 74px)}
 nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(14px, 5vw, 6%);display:flex;justify-content:space-between;align-items:center;background:#000;z-index:9999;border-bottom:1px solid #151515}
-.logo{font-size:clamp(19px, 2.4vw, 26px);font-weight:800;color:var(--pink)}
+.logo{font-size:clamp(19px, 2.4vw, 26px);font-weight:800;color:var(--pink);transition:opacity .2s ease}
+.logo:hover{opacity:.88}
 .links{display:flex;gap:clamp(14px, 2vw, 24px);overflow-x:auto;scrollbar-width:none}
 .links::-webkit-scrollbar{display:none}
-.links a{color:#777;text-decoration:none;font-size:clamp(11px, 1.1vw, 13px);font-weight:600;padding-bottom:5px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
+.links a{color:#777;text-decoration:none;font-size:clamp(11px, 1.1vw, 13px);font-weight:600;padding-bottom:5px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:color .2s ease,border-color .2s ease}
+.links a:hover{color:#ccc}
 .links a.active{color:#fff;border-bottom:2px solid var(--pink)}
 .viewport{margin-top:var(--nav-h);height:calc(100vh - var(--nav-h));height:calc(100dvh - var(--nav-h));width:100%;position:relative;overflow:hidden}
 .page{position:absolute;inset:0;width:100%;height:100%;display:none !important;padding:12px clamp(60px, 5vw, 78px);overflow:hidden;background:#000}
 .page.active{display:flex !important;animation:fade .28s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes subtleRise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ambientGlow{0%,100%{box-shadow:0 0 70px rgba(180,0,0,.25), 0 0 120px rgba(201,122,126,.24)}50%{box-shadow:0 0 85px rgba(180,0,0,.34), 0 0 145px rgba(201,122,126,.35)}}
+@keyframes blinkCursor{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes streakTravel{
+  0%{top:100%;opacity:0;transform:translate(-50%, 0)}
+  12%{opacity:1}
+  88%{opacity:1}
+  100%{top:0%;opacity:0;transform:translate(-50%, -100%)}
+}
 
-/* HOME SECTION (50/50 SPLIT, BIGGER FULL-BODY PHOTO, WORDS SHIFTED RIGHT) */
+/* HOME SECTION */
 #home{justify-content:space-between;align-items:center;gap:clamp(24px, 4vw, 56px);padding:12px clamp(72px, 7vw, 118px)}
 .fullbody-frame{
   height:min(82vh, 660px);
@@ -39,6 +50,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   display:flex;
   align-items:center;
   justify-content:center;
+  animation:ambientGlow 5s ease-in-out infinite;
 }
 .fullbody-frame img{
   width:100%;
@@ -46,21 +58,40 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   object-fit:contain;
   display:block;
 }
-.home-text{flex:0 1 48%;max-width:520px;margin-left:auto}
-.home-text h1{font-size:clamp(44px, 5.8vw, 76px);font-weight:800;line-height:1.05;letter-spacing:-2px;white-space:nowrap}
-.home-text h1 span{color:var(--pink)}
-.home-text h2{font-size:clamp(21px, 2.5vw, 32px);font-weight:700;margin:16px 0 12px}
-.home-text p{color:#aaa;font-size:clamp(14.5px, 1.4vw, 19px);line-height:1.6;max-width:520px}
-.home-text p b{color:#fff}
-.home-btn{margin-top:22px;display:inline-flex;gap:10px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:clamp(11px, 1.1vw, 14px) clamp(26px, 2.8vw, 36px);border-radius:32px;font-size:clamp(14px, 1.3vw, 17px);font-weight:600;cursor:pointer;background:transparent}
+.home-text{flex:0 1 50%;max-width:560px;margin-left:auto}
+.home-text h1{font-size:clamp(32px, 4vw, 54px);font-weight:800;line-height:1.12;letter-spacing:-1.2px}
+.home-text h1 span.typed-name{color:var(--pink);display:inline}
+.home-text p{color:#aaa;font-size:clamp(15.5px, 1.48vw, 20px);line-height:1.62;max-width:540px;margin-top:18px;min-height:66px}
+.home-text p b{color:#fff;font-weight:700}
+.typing-cursor{
+  display:inline;
+  color:var(--pink);
+  font-weight:500;
+  margin-left:2px;
+  animation:blinkCursor .72s infinite;
+}
+.typing-cursor.hidden{
+  display:none;
+}
+.home-btn{margin-top:22px;display:inline-flex;gap:10px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:clamp(11px, 1.1vw, 14px) clamp(26px, 2.8vw, 36px);border-radius:32px;font-size:clamp(14px, 1.3vw, 17px);font-weight:600;cursor:pointer;background:transparent;opacity:0;transform:translateY(6px);transition:background .22s ease,color .22s ease,opacity .35s ease,transform .35s ease}
 .home-btn:hover{background:var(--pink);color:#000}
+#home.page.active .home-btn.reveal{
+  opacity:1;
+  transform:translateY(0);
+}
+#home.page.active .home-btn.reveal:hover{
+  transform:translateY(-2px);
+}
 
-/* PERSONAL INFORMATION SECTION (UPPER PLACEMENT + SAME HEADING SIZE + SQUARE PHOTO) */
+/* PERSONAL INFORMATION SECTION */
 #about{
   flex-direction:column !important;
   align-items:center;
   justify-content:flex-start;
   padding:8px clamp(60px, 5vw, 78px);
+}
+#about.page.active .pif-sheet{
+  animation:subtleRise .32s ease both;
 }
 .pif-sheet{
   width:100%;
@@ -127,6 +158,11 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   display:flex;
   flex-direction:column;
   justify-content:center;
+  transition:border-color .2s ease,background-color .2s ease;
+}
+.pif-field:hover{
+  border-color:rgba(201,122,126,.55);
+  background:#161616;
 }
 .pif-label{
   font-size:8.2px;
@@ -167,6 +203,12 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   padding:1.5px 7px;
   font-size:9.2px;
   margin:0;
+  transition:background-color .2s ease,color .2s ease,transform .2s ease;
+}
+#about .skill-tag:hover{
+  background:var(--pink);
+  color:#000;
+  transform:translateY(-1px);
 }
 
 /* SQUARE PROFILE PICTURE ON TOP-RIGHT */
@@ -190,19 +232,32 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   object-position:top;
   background:#121212;
   box-shadow:0 6px 20px rgba(201,122,126,.18);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.about-right img:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(201,122,126,.28);
 }
 
 .title{font-size:clamp(20px, 2.2vw, 26px);margin-bottom:8px;font-weight:700;line-height:1.2}
 .title span{color:var(--pink)}
 .skill-tag{background:var(--card);border:1px solid var(--pink);color:var(--pink);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:500;display:inline-block;margin:3px}
 
-/* ACHIEVEMENTS + SLIMMER BIGGER LEFT EDUCATION TIMELINE (NO SCROLL) */
+/* ACHIEVEMENTS + LEFT EDUCATION TIMELINE WITH MOVING LIGHT STREAK & SCHOOL HIGHLIGHT */
 #education{
   flex-direction:row !important;
   align-items:flex-start;
   justify-content:center;
   gap:16px;
   padding:10px clamp(58px, 4.8vw, 74px);
+}
+#education.page.active .edu-step{
+  animation:subtleRise .34s ease both;
+}
+#education.page.active .edu-step:nth-child(2){animation-delay:.07s}
+#education.page.active .edu-step:nth-child(3){animation-delay:.14s}
+#education.page.active .ach-card:not(.hide){
+  animation:subtleRise .32s ease both;
 }
 .edu-rail{
   flex:0 0 295px;
@@ -237,14 +292,27 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   gap:8px;
   padding:2px 0 2px 14px;
 }
-.edu-timeline::before{
-  content:'';
+.edu-track{
   position:absolute;
   left:40px;
   top:28px;
   bottom:28px;
-  width:2.5px;
-  background:linear-gradient(to top, var(--pink), rgba(201,122,126,.45));
+  width:3px;
+  background:linear-gradient(to top, rgba(201,122,126,.85), rgba(201,122,126,.25));
+  border-radius:999px;
+  overflow:hidden;
+  pointer-events:none;
+}
+.edu-light-streak{
+  position:absolute;
+  left:50%;
+  top:100%;
+  width:7px;
+  height:56px;
+  background:linear-gradient(to top, rgba(255,255,255,0), rgba(255,220,222,.95), #fff, rgba(201,122,126,0));
+  border-radius:999px;
+  box-shadow:0 0 12px rgba(255,225,227,.95), 0 0 22px rgba(201,122,126,.9);
+  animation:streakTravel 3.2s linear infinite;
 }
 .edu-step{
   position:relative;
@@ -252,6 +320,20 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   align-items:center;
   gap:10px;
   z-index:1;
+  cursor:pointer;
+  padding:3px 6px;
+  border-radius:10px;
+  border:1px solid transparent;
+  transition:background-color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.edu-step:hover{
+  background:rgba(201,122,126,.08);
+  border-color:rgba(201,122,126,.35);
+}
+.edu-step.selected{
+  background:rgba(201,122,126,.16);
+  border-color:var(--pink);
+  box-shadow:0 0 16px rgba(201,122,126,.22);
 }
 .edu-logo-circle{
   width:52px;
@@ -266,6 +348,12 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   justify-content:center;
   padding:4px;
   box-shadow:0 0 14px rgba(201,122,126,.24);
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.edu-step:hover .edu-logo-circle,
+.edu-step.selected .edu-logo-circle{
+  transform:scale(1.04);
+  box-shadow:0 0 18px rgba(201,122,126,.42);
 }
 .edu-logo-circle img{
   width:100%;
@@ -290,20 +378,34 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   font-size:12px;
   font-weight:700;
   color:#fff;
-  line-height:1.24;
-  margin-top:2px;
+  line-height:1.22;
+  margin-top:1.5px;
+  text-decoration:underline;
+  text-decoration-color:rgba(201,122,126,.45);
+  text-underline-offset:2px;
+}
+.edu-step.selected .edu-school{
+  color:var(--pink);
+  text-decoration-color:var(--pink);
 }
 .edu-stage{
-  font-size:10.8px;
+  font-size:10.6px;
   color:#d0d0d0;
-  line-height:1.22;
-  margin-top:1px;
+  line-height:1.2;
+  margin-top:1.5px;
+}
+.edu-honor{
+  font-size:10.3px;
+  font-weight:600;
+  color:var(--pink);
+  line-height:1.2;
+  margin-top:1.5px;
 }
 .edu-loc{
-  font-size:10.4px;
+  font-size:10.1px;
   color:#a3a3a3;
-  line-height:1.22;
-  margin-top:1px;
+  line-height:1.2;
+  margin-top:1.5px;
 }
 
 .ach-main{
@@ -332,8 +434,8 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   margin:0 0 10px;
   flex-shrink:0;
 }
-.ach-filter{background:#b8b8b8;color:#fff;border:none;height:33px;padding:0 13px;border-radius:6px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;cursor:pointer;min-width:110px;transition:background-color .2s,color .2s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
-.ach-filter:hover{background:#d1d1d1}
+.ach-filter{background:#b8b8b8;color:#fff;border:none;height:33px;padding:0 13px;border-radius:6px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;cursor:pointer;min-width:110px;transition:background-color .2s,color .2s,transform .2s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.ach-filter:hover{background:#d1d1d1;transform:translateY(-1px)}
 .ach-filter.active{background:#fff;color:#000;font-weight:600}
 .ach-filter .num{display:none;background:var(--pink);color:#000;font-size:10px;font-weight:700;min-width:19px;height:19px;border-radius:50%;align-items:center;justify-content:center;padding:0 4px}
 .ach-filter.active .num{display:inline-flex}
@@ -342,70 +444,172 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   grid-template-columns:repeat(4, 1fr);
   grid-auto-rows:max-content;
   align-content:start;
-  gap:10px;
+  gap:9px;
   width:100%;
   max-width:1120px;
   margin:0 auto;
 }
-.ach-card{background:#fff;border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;text-align:left;border:1px solid #222;display:flex;flex-direction:column}
-.ach-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,122,126,.35);border-color:var(--pink)}
+.ach-card{background:#fff;border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s,opacity .25s;position:relative;text-align:left;border:1px solid #222;display:flex;flex-direction:column}
+.ach-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(201,122,126,.35);border-color:var(--pink)}
 .ach-card.hide{display:none}
 .ach-card.pop{animation:pop .25s ease}
+.ach-grid.school-active .ach-card:not(.hide):not(.school-match){
+  opacity:.34;
+  transform:scale(.98);
+}
+.ach-card.school-match{
+  border:2px solid var(--pink);
+  box-shadow:0 0 18px rgba(201,122,126,.65);
+  transform:translateY(-3px);
+  z-index:2;
+}
 @keyframes pop{from{opacity:.4}to{opacity:1}}
-.ach-thumb{width:100%;aspect-ratio:16/9;max-height:106px;background:#fff;display:flex;align-items:center;justify-content:center;padding:5px}
-.ach-thumb img{width:100%;height:100%;object-fit:contain}
-.ach-info{padding:7px 9px 8px;background:#0d0d0d;flex:1;display:flex;flex-direction:column;justify-content:center}
-.ach-info h3{font-size:12.4px;font-weight:700;color:#fff;line-height:1.25;word-wrap:break-word}
-.ach-info p{font-size:10.6px;color:#a5a5a5;margin-top:2px;line-height:1.25;word-wrap:break-word}
+.ach-thumb{width:100%;aspect-ratio:16/9;max-height:92px;background:#fff;display:flex;align-items:center;justify-content:center;padding:4px}
+.ach-thumb img{width:100%;height:100%;object-fit:contain;transition:transform .28s ease}
+.ach-card:hover .ach-thumb img{transform:scale(1.03)}
+.ach-info{padding:6px 8px 7px;background:#0d0d0d;flex:1;display:flex;flex-direction:column;justify-content:center}
+.ach-info h3{font-size:11.6px;font-weight:700;color:#fff;line-height:1.22;word-wrap:break-word}
+.ach-info p{font-size:10px;color:#a5a5a5;margin-top:2px;line-height:1.22;word-wrap:break-word}
 .ach-view{position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;color:#fff;font-weight:600;font-size:12px}
 .ach-card:hover .ach-view{opacity:1}
-.ach-count{color:#777;font-size:11px;text-align:center;margin-top:7px;flex-shrink:0}
+.ach-count{color:#777;font-size:11px;text-align:center;margin-top:6px;flex-shrink:0}
 
-/* FAMILY & FRIENDS SECTION (UPPER PLACEMENT + SAME TITLE SIZE + FULL HEADS/HAIR VISIBLE) */
+/* FAMILY & FRIENDS SECTION: FULL-SCALE OVERLAPPING STACKED TABS */
 #family{
   flex-direction:column;
   align-items:center;
   justify-content:flex-start;
-  padding:10px clamp(62px, 5vw, 80px);
+  padding:12px clamp(64px, 5.5vw, 92px);
 }
+#family.page.active .p-card{
+  animation:subtleRise .34s ease both;
+}
+#family.page.active .p-card:nth-child(2){animation-delay:.06s}
+#family.page.active .p-card:nth-child(3){animation-delay:.12s}
+#family.page.active .p-card:nth-child(4){animation-delay:.18s}
 #family .title{
-  font-size:clamp(20px, 2.2vw, 26px);
+  font-size:clamp(22px, 2.4vw, 28px);
   text-align:center;
-  margin-bottom:10px;
+  margin-bottom:16px;
   flex-shrink:0;
 }
-.p-wrap{display:grid;grid-template-columns:repeat(4, 1fr);gap:14px;width:100%;max-width:1240px;align-items:stretch}
-.p-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px;text-align:center;display:flex;flex-direction:column;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
-.p-card:hover{transform:translateY(-3px);border-color:var(--pink);box-shadow:0 12px 26px rgba(201,122,126,.25)}
-.p-photo-wrap{position:relative;width:100%;height:min(26vh, 225px);border-radius:10px;overflow:hidden;border:1px solid var(--pink);margin-bottom:8px;background:#181818;flex-shrink:0}
-.p-card img{width:100%;height:100%;object-fit:cover;object-position:center 0%;display:block}
-.p-view{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;color:#fff;font-weight:600;font-size:12px;gap:6px}
+.p-wrap{
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+  width:100%;
+  max-width:1360px;
+  height:min(72vh, 540px);
+  padding-left:14px;
+}
+.p-card{
+  flex:1 1 0;
+  min-width:0;
+  height:100%;
+  margin-left:-22px;
+  background:#111;
+  border:1.5px solid #2e2e2e;
+  border-radius:18px;
+  padding:16px 18px 16px 24px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  cursor:pointer;
+  transition:transform .28s cubic-bezier(.22,.8,.36,1),box-shadow .28s ease,border-color .28s ease,background-color .28s ease;
+  position:relative;
+  overflow:hidden;
+  box-shadow:-10px 6px 22px rgba(0,0,0,.72);
+}
+.p-card:first-child{margin-left:0;padding-left:18px;z-index:1}
+.p-card:nth-child(2){z-index:2}
+.p-card:nth-child(3){z-index:3}
+.p-card:nth-child(4){z-index:4}
+.p-card:hover,
+.p-card:focus-visible{
+  transform:translateY(-8px);
+  border-color:var(--pink);
+  background:#151515;
+  box-shadow:0 16px 32px rgba(201,122,126,.3), -8px 8px 24px rgba(0,0,0,.8);
+  z-index:10;
+}
+.p-photo-wrap{
+  position:relative;
+  width:100%;
+  height:min(38vh, 315px);
+  border-radius:12px;
+  overflow:hidden;
+  border:1.5px solid var(--pink);
+  margin-bottom:12px;
+  background:#181818;
+  flex-shrink:0;
+}
+.p-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 0%;
+  display:block;
+  transition:transform .28s ease;
+}
+.p-card:hover img{transform:scale(1.03)}
+.p-view{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.58);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:.2s;
+  color:#fff;
+  font-weight:600;
+  font-size:13px;
+  gap:7px;
+}
 .p-card:hover .p-view{opacity:1}
-.p-card h3{font-size:clamp(13.5px, 1.25vw, 15px);color:var(--pink);margin-bottom:4px}
-.p-card p{font-size:clamp(10.8px, 0.94vw, 11.7px);line-height:1.44}
+.p-card h3{font-size:clamp(16px, 1.45vw, 19px);color:var(--pink);margin-bottom:6px;font-weight:700}
+.p-card p{font-size:clamp(12.2px, 1.08vw, 14px);line-height:1.52}
 
-.btn{margin-top:16px;display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:10px 24px;border-radius:28px;font-size:13px;font-weight:600;cursor:pointer;background:transparent}
-.btn:hover{background:var(--pink);color:#000}
+.btn{margin-top:16px;display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--pink);color:var(--pink);padding:10px 24px;border-radius:28px;font-size:13px;font-weight:600;cursor:pointer;background:transparent;transition:background .2s ease,color .2s ease,transform .2s ease}
+.btn:hover{background:var(--pink);color:#000;transform:translateY(-1px)}
 
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:10000;align-items:center;justify-content:center;padding:20px}
-.modal.active{display:flex}
-.modal-box{background:#111;border:1px solid var(--pink);border-radius:16px;padding:20px;max-width:500px;width:95%;text-align:center;position:relative}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:10000;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .2s ease}
+.modal.active{display:flex;opacity:1}
+.modal-box{background:#111;border:1px solid var(--pink);border-radius:16px;padding:20px;max-width:500px;width:95%;text-align:center;position:relative;animation:subtleRise .24s ease both}
 .modal-box img{width:100%;max-height:60vh;object-fit:contain;border-radius:8px;margin-bottom:10px;background:#fff}
-.close{position:absolute;top:8px;right:12px;font-size:18px;color:#666;cursor:pointer}
-.side-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:9990;width:48px;height:48px;border-radius:50%;background:var(--pink);color:#000;border:none;display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer}
-.side-arrow:disabled{opacity:.25}
+.close{position:absolute;top:8px;right:12px;font-size:18px;color:#666;cursor:pointer;transition:color .2s ease}
+.close:hover{color:#fff}
+.side-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:9990;width:48px;height:48px;border-radius:50%;background:var(--pink);color:#000;border:none;display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;transition:transform .2s ease,opacity .2s ease,background-color .2s ease}
+.side-arrow:hover:not(:disabled){transform:translateY(-50%) scale(1.06);background:#d88c90}
+.side-arrow:disabled{opacity:.25;cursor:default}
 #prevSide{left:10px}#nextSide{right:10px}
+
 /* BIG CERTIFICATE / PHOTO VIEW */
-#certModal .modal-box{max-width:920px;width:96%;padding:14px 14px 10px;background:#0a0a0a}
-#certImg{width:100%;max-height:82vh;object-fit:contain;border-radius:6px;margin-bottom:6px;background:#111;cursor:zoom-in;transition:transform .25s ease}
+#certModal .modal-box{max-width:920px;width:96%;padding:14px 14px 12px;background:#0a0a0a}
+#certImg{width:100%;max-height:76vh;object-fit:contain;border-radius:6px;margin-bottom:8px;background:#111;cursor:zoom-in;transition:transform .25s ease}
 #certImg.zoomed{transform:scale(1.8);cursor:zoom-out}
-#certTitle{color:#c97a7e !important;font-size:13px !important;margin:6px 0 2px !important}
-.cert-hint{color:#888;font-size:11px;margin-bottom:2px}
+#certTitle{color:#c97a7e !important;font-size:15px !important;font-weight:700 !important;margin:4px 0 3px !important}
+#certCaption{color:#d4d4d4;font-size:12.5px;line-height:1.48;max-width:680px;margin:0 auto 4px}
+.cert-hint{color:#888;font-size:11px;margin-top:2px}
 #certModal .close{top:6px;right:10px;background:#ff5c5c;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2}
 
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+
+@media (max-width:1280px) and (min-width:1025px){
+  #family{padding:12px clamp(60px, 4.5vw, 76px)}
+  .p-wrap{height:min(70vh, 500px);padding-left:10px}
+  .p-card{margin-left:-18px;padding:14px 14px 14px 20px}
+  .p-photo-wrap{height:min(34vh, 275px)}
+  .p-card p{font-size:clamp(11.5px, 1vw, 13px)}
+}
+
 @media (max-width:1100px) and (orientation:landscape){
-  .p-wrap{grid-template-columns:repeat(4, 1fr);gap:10px}
-  .p-photo-wrap{height:min(22vh, 175px)}
+  .p-wrap{padding-left:12px}
+  .p-card{margin-left:-16px;padding:12px 12px 12px 16px}
+  .p-photo-wrap{height:min(30vh, 235px)}
 }
 @media (max-width:1040px){
   #home{padding:12px clamp(58px, 5vw, 76px)}
@@ -415,14 +619,15 @@ nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);padding:0 clamp(1
   .about-right{width:140px;margin-top:0}
   .about-right img{width:140px;height:140px}
   .edu-rail{flex:0 0 250px;width:250px}
-  .ach-grid{grid-template-columns:repeat(3, 1fr)}
+  .ach-grid{grid-template-columns:repeat(4, 1fr)}
 }
 @media (max-width:1024px) and (orientation:portrait){
   html,body{height:auto;min-height:100vh;overflow-x:hidden;overflow-y:auto}
   .viewport{height:auto;min-height:calc(100vh - var(--nav-h));overflow:visible}
   .page{position:relative;inset:auto;height:auto;min-height:calc(100vh - var(--nav-h));overflow:visible;padding-bottom:64px}
-  .p-wrap{grid-template-columns:repeat(2, 1fr)}
-  .p-photo-wrap{height:220px}
+  .p-wrap{display:grid;grid-template-columns:repeat(2, 1fr);gap:14px;height:auto;padding-left:0}
+  .p-card{margin-left:0;height:auto;padding:14px}
+  .p-photo-wrap{height:230px}
 }
 @media (max-width:768px){
 html,body{height:auto;min-height:100vh;overflow-x:hidden;overflow-y:auto}
@@ -439,9 +644,10 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 #home{justify-content:center;padding:16px 14px 70px}
 .fullbody-frame{height:380px;max-width:85vw;flex:none}
 .home-text{flex:none;max-width:100%;margin-left:0}
-.home-text h1{font-size:38px !important;white-space:normal}.home-text h2{font-size:19px !important}.home-text p{font-size:13.5px !important;margin:0 auto}
+.home-text h1{font-size:30px !important;white-space:normal}.home-text p{font-size:14px !important;margin:14px auto 0}
 #family{justify-content:flex-start;padding:16px 14px 70px}
-.p-wrap{grid-template-columns:1fr}
+.p-wrap{display:grid;grid-template-columns:1fr;gap:12px;height:auto;padding-left:0}
+.p-card{margin-left:0;height:auto;padding:14px}
 .p-photo-wrap{height:240px}
 #education{padding:16px 14px 70px}
 .edu-rail{width:100%;height:auto;max-height:none;flex:none}
@@ -452,9 +658,10 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 .ach-filter{min-width:0;flex:1;padding:0 8px;font-size:12px}
 #about,#education,#family{text-align:left}
 .side-arrow{top:auto !important;bottom:14px;transform:none !important;width:42px;height:42px}
+.side-arrow:hover:not(:disabled){transform:scale(1.05)}
 #prevSide{left:14px}#nextSide{right:14px}
-#certModal .modal-box{width:98%;padding:10px 10px 8px}
-#certImg{max-height:75vh}
+#certModal .modal-box{width:98%;padding:10px 10px 10px}
+#certImg{max-height:70vh}
 #certImg.zoomed{transform:scale(1.6)}
 }
 </style>
@@ -464,7 +671,14 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
 <button class="side-arrow" id="prevSide" onclick="prevPage()"><i class="fas fa-chevron-left"></i></button>
 <button class="side-arrow" id="nextSide" onclick="nextPage()"><i class="fas fa-chevron-right"></i></button>
 <div class="viewport">
-<div id="home" class="page active"><div class="fullbody-frame"><img src="formal-home.jpg" onerror="this.src='profile.jpg'"></div><div class="home-text"><h1>Hi, it's <span>Hazel</span></h1><h2>I'm a BSIT Student</h2><p>I am <b>BOLD, driven, and eager to learn</b> - ready to contribute real solutions to your company.</p><button class="home-btn" onclick="openContact()"><i class="fas fa-paper-plane"></i> Hire me</button></div></div>
+<div id="home" class="page active">
+  <div class="fullbody-frame"><img src="formal-home.jpg" onerror="this.src='profile.jpg'"></div>
+  <div class="home-text">
+    <h1>Hi, it's <span class="typed-name" id="typedName"></span><span class="typing-cursor" id="h1Cursor">|</span></h1>
+    <p id="homeBio"><span id="typedPrefix"></span><b id="typedBold"></b><span id="typedAfter"></span><span class="typing-cursor hidden" id="bioCursor">|</span></p>
+    <button class="home-btn" id="homeCta" onclick="openContact()"><i class="fas fa-paper-plane"></i> Hire me</button>
+  </div>
+</div>
 
 <div id="about" class="page">
   <div class="pif-sheet">
@@ -494,7 +708,7 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
             <span class="pif-val">Baguio City, Benguet</span>
           </div>
           <div class="pif-field">
-            <span class="pif-label">Marital Status</span>
+            <span class="pif-label">Civil Status</span>
             <span class="pif-val">Single</span>
           </div>
           <div class="pif-field">
@@ -568,7 +782,7 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
       </div>
       <div class="pif-field">
         <span class="pif-label">Work Experience</span>
-        <span class="pif-val">DOLE SPES Clerk (2023 &amp; 2026)</span>
+        <span class="pif-val">DOLE SPES Clerk (2023, 2025 &amp; 2026)</span>
       </div>
       <div class="pif-field span-2">
         <span class="pif-label">Hobbies &amp; Interests</span>
@@ -615,7 +829,8 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
   <aside class="edu-rail">
     <h2 class="edu-rail-title"><span>Education</span></h2>
     <div class="edu-timeline">
-      <div class="edu-step">
+      <div class="edu-track"><div class="edu-light-streak"></div></div>
+      <div class="edu-step" data-school="uc" onclick="toggleSchoolHighlight('uc',this)">
         <div class="edu-logo-circle"><img src="logo-uc.jpg" onerror="this.src='https://via.placeholder.com/90/ffffff/c97a7e?text=UC'"></div>
         <div class="edu-meta">
           <span class="edu-year">2025 – Present</span>
@@ -624,21 +839,23 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
           <span class="edu-loc">Governor Pack Rd., Baguio City, Benguet</span>
         </div>
       </div>
-      <div class="edu-step">
+      <div class="edu-step" data-school="bsu" onclick="toggleSchoolHighlight('bsu',this)">
         <div class="edu-logo-circle"><img src="logo-bsu-sls.jpg" onerror="this.src='https://via.placeholder.com/90/ffffff/c97a7e?text=BSU'"></div>
         <div class="edu-meta">
           <span class="edu-year">2019 – 2025</span>
           <span class="edu-school">Benguet State University - Secondary Laboratory School</span>
           <span class="edu-stage">Junior High &amp; Senior High STEM</span>
+          <span class="edu-honor">Graduated With Honors (Grades 10–12)</span>
           <span class="edu-loc">Km. 5, La Trinidad, Benguet</span>
         </div>
       </div>
-      <div class="edu-step">
+      <div class="edu-step" data-school="ltcs" onclick="toggleSchoolHighlight('ltcs',this)">
         <div class="edu-logo-circle"><img src="logo-ltcs.jpg" onerror="this.src='https://via.placeholder.com/90/ffffff/c97a7e?text=LTCS'"></div>
         <div class="edu-meta">
           <span class="edu-year">2013 – 2019</span>
           <span class="edu-school">La Trinidad Central School</span>
           <span class="edu-stage">Elementary</span>
+          <span class="edu-honor">Graduated With Honors (Grades 4–6)</span>
           <span class="edu-loc">Poblacion, La Trinidad, Benguet</span>
         </div>
       </div>
@@ -648,56 +865,57 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
   <div class="ach-main">
     <h2 class="title" style="text-align:center">My <span>Achievements</span></h2>
     <div class="ach-filter-wrap">
-      <button class="ach-filter" onclick="filterAch('all',this)">All <span class="num">7</span></button>
+      <button class="ach-filter" onclick="filterAch('all',this)">All <span class="num">8</span></button>
       <button class="ach-filter" onclick="filterAch('academic',this)">Academic <span class="num">4</span></button>
       <button class="ach-filter" onclick="filterAch('training',this)">Training <span class="num">1</span></button>
-      <button class="ach-filter" onclick="filterAch('work',this)">Work <span class="num">2</span></button>
+      <button class="ach-filter" onclick="filterAch('work',this)">Work <span class="num">3</span></button>
     </div>
     <div class="ach-grid" id="achGrid">
-      <div class="ach-card" data-cat="academic" onclick="openCert('cert-jhs.jpeg','Junior High School Certificate - BSU Secondary Laboratory School • 2023')"><div class="ach-thumb"><img src="cert-jhs.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Junior+High+Certificate'"></div><div class="ach-info"><h3>Junior High School Certificate</h3><p>BSU - SLS • Agricultural Science • 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
-      <div class="ach-card" data-cat="academic" onclick="openCert('cert-shs-diploma.jpeg','Senior High School Diploma - STEM Strand • BSU Secondary Laboratory School • 2025')"><div class="ach-thumb"><img src="cert-shs-diploma.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Senior+High+Diploma+STEM'"></div><div class="ach-info"><h3>Senior High School Diploma</h3><p>BSU - SLS • STEM Strand • 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
-      <div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-23-24.jpeg','Certificate of Recognition - Leadership • SY 2023-2024 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-23-24.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2023-2024'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2023 - 2024</p></div><div class="ach-view">👁 View Certificate</div></div>
-      <div class="ach-card" data-cat="academic" onclick="openCert('cert-leadership-24-25.jpeg','Certificate of Recognition - Leadership • SY 2024-2025 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-24-25.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2024-2025'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2024 - 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
-      <div class="ach-card" data-cat="training" onclick="openCert('cert-dost.jpeg','DOST-SEI Scholars Leadership Camp - Certificate of Participation • Sept 16-20, 2026 • ION Hotel, Baguio City')"><div class="ach-thumb"><img src="cert-dost.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=DOST-SEI+Camp'"></div><div class="ach-info"><h3>DOST-SEI Scholars Leadership Camp</h3><p>Certificate of Participation • Sept 16-20, 2026</p></div><div class="ach-view">👁 View Certificate</div></div>
-      <div class="ach-card" data-cat="work" onclick="openCert('cert-spes-23.jpeg','Certification - SPES Clerk • 25 Days • LGU La Trinidad • June - July 2023 • Issued Sept 23, 2023')"><div class="ach-thumb"><img src="cert-spes-23.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2023+Certification'"></div><div class="ach-info"><h3>Certification - SPES Clerk</h3><p>LGU La Trinidad • 25 Days • June - July 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
-      <div class="ach-card" data-cat="work" onclick="openCert('cert-spes-26.jpeg','SPES 2026 - Clerk • Certificate to be issued on Dec 17, 2026')"><div class="ach-thumb"><img src="cert-spes-26.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2026+-+Dec+17,+2026'"></div><div class="ach-info"><h3>SPES 2026 - Clerk</h3><p>DOLE / LGU La Trinidad • Issued Dec 17, 2026</p></div><div class="ach-view">👁 View Details</div></div>
+      <div class="ach-card" data-cat="academic" data-school="bsu" onclick="openCert('cert-jhs.jpeg','Junior High School Certificate - BSU Secondary Laboratory School • 2023')"><div class="ach-thumb"><img src="cert-jhs.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Junior+High+Certificate'"></div><div class="ach-info"><h3>Junior High School Certificate</h3><p>BSU - SLS • Agricultural Science • 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="academic" data-school="bsu" onclick="openCert('cert-shs-diploma.jpeg','Senior High School Diploma - STEM Strand • BSU Secondary Laboratory School • 2025')"><div class="ach-thumb"><img src="cert-shs-diploma.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Senior+High+Diploma+STEM'"></div><div class="ach-info"><h3>Senior High School Diploma</h3><p>BSU - SLS • STEM Strand • 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="academic" data-school="bsu" onclick="openCert('cert-leadership-23-24.jpeg','Certificate of Recognition - Leadership • SY 2023-2024 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-23-24.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2023-2024'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2023 - 2024</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="academic" data-school="bsu" onclick="openCert('cert-leadership-24-25.jpeg','Certificate of Recognition - Leadership • SY 2024-2025 • BSU Secondary Laboratory School')"><div class="ach-thumb"><img src="cert-leadership-24-25.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=Leadership+2024-2025'"></div><div class="ach-info"><h3>Certificate of Recognition - Leadership</h3><p>BSU - SLS • SY 2024 - 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="training" data-school="uc" onclick="openCert('cert-dost.jpeg','DOST-SEI Scholars Leadership Camp - Certificate of Participation • Sept 16-20, 2026 • ION Hotel, Baguio City')"><div class="ach-thumb"><img src="cert-dost.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=DOST-SEI+Camp'"></div><div class="ach-info"><h3>DOST-SEI Scholars Leadership Camp</h3><p>Certificate of Participation • Sept 16-20, 2026</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="work" data-school="" onclick="openCert('cert-spes-23.jpeg','Certification - SPES Clerk • 25 Days • LGU La Trinidad • June - July 2023 • Issued Sept 23, 2023')"><div class="ach-thumb"><img src="cert-spes-23.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2023+Certification'"></div><div class="ach-info"><h3>Certification - SPES Clerk</h3><p>LGU La Trinidad • 25 Days • June - July 2023</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="work" data-school="" onclick="openCert('cert-spes-25.jpeg','Certification - SPES Clerk • May - June 2025 • DOLE / LGU La Trinidad')"><div class="ach-thumb"><img src="cert-spes-25.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2025+Certification'"></div><div class="ach-info"><h3>Certification - SPES Clerk</h3><p>LGU La Trinidad • May - June 2025</p></div><div class="ach-view">👁 View Certificate</div></div>
+      <div class="ach-card" data-cat="work" data-school="" onclick="openCert('cert-spes-26.jpeg','SPES 2026 - Clerk • Certificate to be issued on Dec 17, 2026')"><div class="ach-thumb"><img src="cert-spes-26.jpeg" onerror="this.src='https://via.placeholder.com/400x260/ffffff/c97a7e?text=SPES+2026+-+Dec+17,+2026'"></div><div class="ach-info"><h3>SPES 2026 - Clerk</h3><p>DOLE / LGU La Trinidad • Issued Dec 17, 2026</p></div><div class="ach-view">👁 View Details</div></div>
     </div>
-    <p class="ach-count" id="achCount">Showing 7 achievements</p>
+    <p class="ach-count" id="achCount">Showing 8 achievements</p>
   </div>
 </div>
 
 <div id="family" class="page">
   <h2 class="title">Family & <span>Friends</span></h2>
-  <div class="p-wrap">
-    <div class="p-card" onclick="openCert('mom.jpg','Cristina P. Nabus')">
+  <div class="p-wrap" id="familyTabs">
+    <div class="p-card" tabindex="0" onclick="openMediaWithCaption('mom.jpg','Cristina P. Nabus — My Mom','She made sure we had just as much as any kid could ask for, even with the little she had. Beyond being our mama, she is a good and beautiful soul who has given us nothing but unconditional love and happiness.')">
       <div class="p-photo-wrap">
         <img src="mom.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Mom'">
-        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
+        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo &amp; Caption</div>
       </div>
       <h3>My Mom</h3>
       <p style="color:#bbb">She made sure we had just as much as any kid could ask for, even with the little she had. Beyond being our mama, she is a good and beautiful soul who has given us nothing but unconditional love and happiness.</p>
     </div>
-    <div class="p-card" onclick="openCert('dad.jpg','Robert M. Nabus')">
+    <div class="p-card" tabindex="0" onclick="openMediaWithCaption('dad.jpg','Robert M. Nabus — My Dad (In Loving Memory)','I was truly a papa\'s girl. Though his time with us was cut short, he remains my biggest inspiration. I strive every day to be as strong and as capable a jack-of-all-trades as he was.')">
       <div class="p-photo-wrap">
         <img src="dad.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Dad'">
-        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
+        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo &amp; Caption</div>
       </div>
       <h3>My Dad</h3>
       <p style="color:#bbb">I was truly a papa's girl. Though his time with us was cut short, he remains my biggest inspiration. I strive every day to be as strong and as capable a jack-of-all-trades as he was.</p>
       <p style="color:#777;margin-top:4px;font-size:11px">In Loving Memory</p>
     </div>
-    <div class="p-card" onclick="openCert('family.jpg','My Siblings')">
+    <div class="p-card" tabindex="0" onclick="openMediaWithCaption('family.jpg','My Siblings','The people who give me both stress and endless laughter on a daily basis and I love them so much for it.')">
       <div class="p-photo-wrap">
         <img src="family.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Siblings'">
-        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
+        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo &amp; Caption</div>
       </div>
       <h3>My Siblings</h3>
       <p style="color:#bbb">The people who give me both stress and endless laughter on a daily basis and I love them so much for it.</p>
     </div>
-    <div class="p-card" onclick="openCert('friends.jpg','My Friends')">
+    <div class="p-card" tabindex="0" onclick="openMediaWithCaption('friends.jpg','My Friends','Grateful for the friends who walked into my life and made every day brighter, warmer, and a whole lot livelier.')">
       <div class="p-photo-wrap">
         <img src="friends.jpg" onerror="this.src='https://via.placeholder.com/320x220/111/c97a7e?text=My+Friends'">
-        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo</div>
+        <div class="p-view"><i class="fas fa-search-plus"></i> View Photo &amp; Caption</div>
       </div>
       <h3>My Friends</h3>
       <p style="color:#bbb">Grateful for the friends who walked into my life and made every day brighter, warmer, and a whole lot livelier.</p>
@@ -705,11 +923,109 @@ nav{padding:0 12px;height:58px}.logo{font-size:18px}.links a{font-size:11px}
   </div>
 </div>
 </div>
-<div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src="" onclick="this.classList.toggle('zoomed')"><h3 id="certTitle"></h3><p class="cert-hint">Tap the photo or certificate to zoom in / out</p></div></div>
+<div id="certModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><img id="certImg" src="" onclick="this.classList.toggle('zoomed')"><h3 id="certTitle"></h3><p id="certCaption"></p><p class="cert-hint">Tap the photo or certificate to zoom in / out</p></div></div>
 <div id="contactModal" class="modal" onclick="closeModals()"><div class="modal-box" onclick="event.stopPropagation()"><span class="close" onclick="closeModals()">x</span><h2 class="title">Contact <span>Me</span></h2><p style="color:#bbb;line-height:2.2;font-size:13px;text-align:left"><i class="fas fa-phone" style="color:#c97a7e"></i> 09182583277<br><i class="fas fa-envelope" style="color:#c97a7e"></i> hazelnabus7@gmail.com<br><i class="fas fa-map-marker-alt" style="color:#c97a7e"></i> Pico, La Trinidad, Benguet 2601, Philippines</p><button class="btn" style="width:100%;justify-content:center;margin-top:12px" onclick="window.location.href='mailto:hazelnabus7@gmail.com'"><i class="fas fa-paper-plane"></i> Email Me Now</button></div></div>
 <script>
 const pages=['home','about','education','family'];
 let currentPage='home';
+const nameText='Hazel Mae P. Nabus';
+const bioPrefix='I am ';
+const bioBold='BOLD, driven, and eager to learn';
+const bioAfter=' - ready to contribute real solutions to your company.';
+let typingTimer=null;
+let revealTimer=null;
+let activeSchool=null;
+
+function clearHomeTimers(){
+  if(typingTimer){ clearTimeout(typingTimer); typingTimer=null; }
+  if(revealTimer){ clearTimeout(revealTimer); revealTimer=null; }
+}
+
+function runHomeTyping(){
+  clearHomeTimers();
+  const nameEl=document.getElementById('typedName');
+  const prefixEl=document.getElementById('typedPrefix');
+  const boldEl=document.getElementById('typedBold');
+  const afterEl=document.getElementById('typedAfter');
+  const h1Cursor=document.getElementById('h1Cursor');
+  const bioCursor=document.getElementById('bioCursor');
+  const ctaEl=document.getElementById('homeCta');
+
+  nameEl.textContent='';
+  prefixEl.textContent='';
+  boldEl.textContent='';
+  afterEl.textContent='';
+  ctaEl.classList.remove('reveal');
+  h1Cursor.classList.remove('hidden');
+  bioCursor.classList.add('hidden');
+
+  const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduced){
+    nameEl.textContent=nameText;
+    prefixEl.textContent=bioPrefix;
+    boldEl.textContent=bioBold;
+    afterEl.textContent=bioAfter;
+    h1Cursor.classList.add('hidden');
+    bioCursor.classList.remove('hidden');
+    ctaEl.classList.add('reveal');
+    return;
+  }
+
+  let nameIdx=0;
+  let prefixIdx=0;
+  let boldIdx=0;
+  let afterIdx=0;
+
+  function typeName(){
+    if(currentPage!=='home') return;
+    if(nameIdx < nameText.length){
+      nameEl.textContent += nameText.charAt(nameIdx);
+      nameIdx++;
+      typingTimer = setTimeout(typeName, 36);
+    } else {
+      h1Cursor.classList.add('hidden');
+      bioCursor.classList.remove('hidden');
+      revealTimer = setTimeout(()=>{ if(currentPage==='home') ctaEl.classList.add('reveal'); }, 120);
+      typingTimer = setTimeout(typePrefix, 120);
+    }
+  }
+
+  function typePrefix(){
+    if(currentPage!=='home') return;
+    if(prefixIdx < bioPrefix.length){
+      prefixEl.textContent += bioPrefix.charAt(prefixIdx);
+      prefixIdx++;
+      typingTimer = setTimeout(typePrefix, 32);
+    } else {
+      typingTimer = setTimeout(typeBold, 25);
+    }
+  }
+
+  function typeBold(){
+    if(currentPage!=='home') return;
+    if(boldIdx < bioBold.length){
+      boldEl.textContent += bioBold.charAt(boldIdx);
+      boldIdx++;
+      typingTimer = setTimeout(typeBold, 34);
+    } else {
+      typingTimer = setTimeout(typeAfter, 25);
+    }
+  }
+
+  function typeAfter(){
+    if(currentPage!=='home') return;
+    if(afterIdx < bioAfter.length){
+      afterEl.textContent += bioAfter.charAt(afterIdx);
+      afterIdx++;
+      typingTimer = setTimeout(typeAfter, 30);
+    } else {
+      bioCursor.classList.remove('hidden');
+    }
+  }
+
+  typingTimer = setTimeout(typeName, 120);
+}
+
 function showPage(id){
   currentPage=id;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -717,13 +1033,53 @@ function showPage(id){
   document.getElementById(id).classList.add('active');
   document.getElementById('l-'+id).classList.add('active');
   updateNav(); window.scrollTo(0,0);
+  if(id==='home'){ runHomeTyping(); }
+  else { clearHomeTimers(); }
   if(id==='education'){ clearAchActive(); }
 }
+
 function clearAchActive(){
+  activeSchool=null;
+  document.querySelectorAll('.edu-step').forEach(s=>s.classList.remove('selected'));
+  document.getElementById('achGrid').classList.remove('school-active');
   document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.ach-card').forEach(card=>{ card.classList.remove('hide'); card.classList.remove('pop'); });
-  document.getElementById('achCount').innerText='Showing 7 achievements';
+  document.querySelectorAll('.ach-card').forEach(card=>{
+    card.classList.remove('hide');
+    card.classList.remove('pop');
+    card.classList.remove('school-match');
+  });
+  document.getElementById('achCount').innerText='Showing 8 achievements';
 }
+
+function toggleSchoolHighlight(schoolKey, stepEl){
+  event.stopPropagation();
+  const grid=document.getElementById('achGrid');
+  if(activeSchool === schoolKey){
+    activeSchool=null;
+    stepEl.classList.remove('selected');
+    grid.classList.remove('school-active');
+    document.querySelectorAll('.ach-card').forEach(c=>c.classList.remove('school-match'));
+    return;
+  }
+  activeSchool=schoolKey;
+  document.querySelectorAll('.edu-step').forEach(s=>s.classList.remove('selected'));
+  stepEl.classList.add('selected');
+  grid.classList.add('school-active');
+  let matches=0;
+  document.querySelectorAll('.ach-card').forEach(card=>{
+    if(!card.classList.contains('hide') && card.dataset.school === schoolKey){
+      card.classList.add('school-match');
+      matches++;
+    } else {
+      card.classList.remove('school-match');
+    }
+  });
+  const schoolName = stepEl.querySelector('.edu-school').innerText;
+  document.getElementById('achCount').innerText = matches > 0
+    ? 'Highlighted ' + matches + ' certificate' + (matches!==1?'s':'') + ' from ' + schoolName + ' (click school again to clear)'
+    : 'No certificates listed for ' + schoolName + ' yet (click school again to clear)';
+}
+
 function nextPage(){
   let idx=pages.indexOf(currentPage);
   if(idx === pages.length-1){ showPage('home'); }
@@ -740,6 +1096,8 @@ function updateNav(){
 }
 document.addEventListener('keydown', e=>{ if(e.key==='ArrowRight') nextPage(); if(e.key==='ArrowLeft') prevPage(); });
 updateNav();
+runHomeTyping();
+
 function filterAch(cat,btn){
   event.stopPropagation();
   document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
@@ -752,17 +1110,55 @@ function filterAch(cat,btn){
       void card.offsetWidth;
       card.classList.add('pop');
       card.style.animationDelay=(i*0.03)+'s';
+      if(activeSchool && card.dataset.school === activeSchool){
+        card.classList.add('school-match');
+      } else {
+        card.classList.remove('school-match');
+      }
       count++;
-    } else { card.classList.add('hide'); }
+    } else {
+      card.classList.add('hide');
+      card.classList.remove('school-match');
+    }
   });
   document.getElementById('achCount').innerText='Showing '+count+' achievement'+(count!==1?'s':'');
 }
+
 document.getElementById('education').addEventListener('click', function(e){
-  if(!e.target.closest('.ach-filter') && !e.target.closest('.ach-card')){
+  if(!e.target.closest('.ach-filter') && !e.target.closest('.ach-card') && !e.target.closest('.edu-step')){
     document.querySelectorAll('.ach-filter').forEach(b=>b.classList.remove('active'));
+    if(activeSchool){
+      activeSchool=null;
+      document.querySelectorAll('.edu-step').forEach(s=>s.classList.remove('selected'));
+      document.getElementById('achGrid').classList.remove('school-active');
+      document.querySelectorAll('.ach-card').forEach(c=>c.classList.remove('school-match'));
+      const visibleCount=document.querySelectorAll('.ach-card:not(.hide)').length;
+      document.getElementById('achCount').innerText='Showing '+visibleCount+' achievement'+(visibleCount!==1?'s':'');
+    }
   }
 });
-function openCert(src,title){ event.stopPropagation(); document.getElementById('certImg').src=src; document.getElementById('certImg').classList.remove('zoomed'); document.getElementById('certTitle').innerText=title; document.getElementById('certModal').classList.add('active'); }
+
+function openCert(src,title){
+  event.stopPropagation();
+  document.getElementById('certImg').src=src;
+  document.getElementById('certImg').classList.remove('zoomed');
+  document.getElementById('certTitle').innerText=title;
+  document.getElementById('certCaption').innerText='';
+  document.getElementById('certCaption').style.display='none';
+  document.getElementById('certModal').classList.add('active');
+}
+
+function openMediaWithCaption(src,title,caption){
+  event.stopPropagation();
+  document.getElementById('certImg').src=src;
+  document.getElementById('certImg').classList.remove('zoomed');
+  document.getElementById('certTitle').innerText=title;
+  const capEl=document.getElementById('certCaption');
+  capEl.innerText=caption;
+  capEl.style.display='block';
+  document.getElementById('certModal').classList.add('active');
+}
+
 function openContact(){document.getElementById('contactModal').classList.add('active');}
 function closeModals(){ document.getElementById('certModal').classList.remove('active'); document.getElementById('contactModal').classList.remove('active'); document.getElementById('certImg').classList.remove('zoomed'); }
 </script>
